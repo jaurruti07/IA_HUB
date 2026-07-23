@@ -1,0 +1,3538 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="AI Global Hub — el catálogo profesional más completo de inteligencias artificiales del mundo. Compara, filtra y descubre la IA perfecta para tu trabajo." />
+  <title>AI Global Hub · Catálogo Profesional de IA</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <style>
+    /* ================================================================
+       AI GLOBAL HUB — SISTEMA DE DISEÑO PREMIUM
+       Paleta:   Navy profundo #0f1a2e · Oro #c9a84c · Azul acero #4a7c9e
+       Display:  Manrope (geométrica, técnica, con carácter)
+       Cuerpo:   Inter (legibilidad)
+       Data/Mono: JetBrains Mono (puntuaciones, cifras, badges técnicos)
+       Firma:    Red de nodos animada en el Hero (malla global de IA)
+       ================================================================ */
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    html {
+      scroll-behavior: smooth;
+    }
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background-color: #f8f9fa;
+      color: #1a2332;
+      transition: background-color 0.4s ease, color 0.4s ease;
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 0.001ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.001ms !important;
+        scroll-behavior: auto !important;
+      }
+    }
+
+    /* ===== VARIABLES DE COLOR Y SISTEMA ===== */
+    :root {
+      --primary: #0f1a2e;
+      --primary-light: #1e3a5f;
+      --primary-dark: #0a1220;
+      --secondary: #c9a84c;
+      --secondary-light: #e8d5a3;
+      --accent: #4a7c9e;
+      --bg: #f8f9fa;
+      --bg-card: #ffffff;
+      --bg-subtle: #f1f3f6;
+      --text: #1a2332;
+      --text-light: #5a6a7e;
+      --border: #e2e6ed;
+      --shadow: rgba(15, 26, 46, 0.08);
+      --shadow-hover: rgba(15, 26, 46, 0.16);
+      --radius: 16px;
+      --radius-sm: 10px;
+      --radius-lg: 24px;
+      --transition: 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      --transition-fast: 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      --font-display: 'Manrope', 'Inter', sans-serif;
+      --font-body: 'Inter', -apple-system, sans-serif;
+      --font-mono: 'JetBrains Mono', ui-monospace, monospace;
+      --shadow-elev-1: 0 1px 2px rgba(15, 26, 46, 0.04), 0 2px 8px rgba(15, 26, 46, 0.04);
+      --shadow-elev-2: 0 4px 20px var(--shadow);
+      --shadow-elev-3: 0 20px 60px var(--shadow-hover);
+      --ring: 0 0 0 3px rgba(201, 168, 76, 0.25);
+    }
+
+    .dark {
+      --primary: #e8edf2;
+      --primary-light: #c0c8d4;
+      --primary-dark: #ffffff;
+      --secondary: #c9a84c;
+      --secondary-light: #e8d5a3;
+      --accent: #6a9ec0;
+      --bg: #0b1120;
+      --bg-card: #151f30;
+      --bg-subtle: #101828;
+      --text: #e8edf2;
+      --text-light: #a0b0c4;
+      --border: #263a52;
+      --shadow: rgba(0, 0, 0, 0.35);
+      --shadow-hover: rgba(0, 0, 0, 0.55);
+    }
+
+    h1, h2, h3, h4, .navbar-brand, .hero-title, .section-title {
+      font-family: var(--font-display);
+    }
+
+    /* Focus states — accesibilidad premium */
+    a:focus-visible,
+    button:focus-visible,
+    input:focus-visible,
+    select:focus-visible {
+      outline: none;
+      box-shadow: var(--ring);
+      border-radius: 8px;
+    }
+
+    /* ===== SCROLLBAR ===== */
+    ::-webkit-scrollbar {
+      width: 10px;
+      height: 10px;
+    }
+    ::-webkit-scrollbar-track {
+      background: var(--bg);
+    }
+    ::-webkit-scrollbar-thumb {
+      background: var(--primary-light);
+      border-radius: 10px;
+      border: 2px solid var(--bg);
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: var(--secondary);
+    }
+
+    /* ===== PROGRESS BAR DE SCROLL ===== */
+    .scroll-progress {
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 2.5px;
+      width: 0%;
+      background: linear-gradient(90deg, var(--secondary), var(--secondary-light));
+      z-index: 100;
+      transition: width 0.1s linear;
+      box-shadow: 0 0 8px rgba(201, 168, 76, 0.6);
+    }
+
+    /* ===== NAVBAR ===== */
+    .navbar {
+      background: rgba(255, 255, 255, 0.7);
+      backdrop-filter: blur(20px) saturate(180%);
+      -webkit-backdrop-filter: blur(20px) saturate(180%);
+      border-bottom: 1px solid rgba(226, 230, 237, 0.3);
+      transition: all var(--transition);
+    }
+    .navbar.scrolled {
+      background: rgba(255, 255, 255, 0.88);
+      box-shadow: 0 4px 30px rgba(15, 26, 46, 0.06);
+      border-bottom: 1px solid rgba(226, 230, 237, 0.6);
+    }
+    .dark .navbar {
+      background: rgba(11, 17, 32, 0.7);
+      border-bottom: 1px solid rgba(38, 58, 82, 0.3);
+    }
+    .dark .navbar.scrolled {
+      background: rgba(11, 17, 32, 0.92);
+      box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
+    }
+    .navbar-brand {
+      font-weight: 800;
+      font-size: 1.4rem;
+      letter-spacing: -0.02em;
+      background: linear-gradient(135deg, var(--primary-light), var(--secondary));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .navbar-brand .dot {
+      display: inline-block;
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--secondary);
+      box-shadow: 0 0 10px var(--secondary), 0 0 20px rgba(201,168,76,.5);
+      margin-left: 2px;
+      -webkit-text-fill-color: initial;
+      animation: pulseDot 2.4s ease-in-out infinite;
+    }
+    @keyframes pulseDot {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.5; transform: scale(1.3); }
+    }
+    .nav-link {
+      position: relative;
+      color: var(--text-light);
+      font-weight: 500;
+      transition: color var(--transition);
+      text-decoration: none;
+    }
+    .nav-link::after {
+      content: '';
+      position: absolute;
+      bottom: -4px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: var(--secondary);
+      transition: width var(--transition);
+      border-radius: 2px;
+    }
+    .nav-link:hover,
+    .nav-link.active {
+      color: var(--primary);
+    }
+    .nav-link:hover::after,
+    .nav-link.active::after {
+      width: 100%;
+    }
+    .dark .nav-link:hover,
+    .dark .nav-link.active {
+      color: var(--secondary-light);
+    }
+
+    /* ===== BOTONES PREMIUM ===== */
+    .btn-icon-nav {
+      color: var(--text-light);
+      transition: all var(--transition-fast);
+      font-size: 1.05rem;
+      padding: 0.55rem;
+      border-radius: 50%;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .btn-icon-nav:hover {
+      color: var(--secondary);
+      background: rgba(201, 168, 76, 0.1);
+      transform: rotate(-8deg) scale(1.05);
+    }
+    .btn-add {
+      background: linear-gradient(135deg, var(--secondary), #b8943a);
+      color: var(--primary-dark);
+      font-weight: 600;
+      font-size: 0.85rem;
+      padding: 0.55rem 1.25rem;
+      border-radius: 100px;
+      transition: all var(--transition);
+      box-shadow: 0 2px 12px rgba(201, 168, 76, 0.25);
+      position: relative;
+      overflow: hidden;
+      isolation: isolate;
+    }
+    .btn-add::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, #fff, transparent);
+      opacity: 0;
+      transition: opacity var(--transition-fast);
+      z-index: -1;
+    }
+    .btn-add:hover {
+      transform: translateY(-2px) scale(1.03);
+      box-shadow: 0 10px 30px rgba(201, 168, 76, 0.4);
+    }
+    .btn-add:hover::before { opacity: 0.15; }
+
+    /* Ripple genérico para todos los botones */
+    .ripple-el {
+      position: relative;
+      overflow: hidden;
+    }
+    .ripple-circle {
+      position: absolute;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.5);
+      transform: scale(0);
+      animation: rippleAnim 0.6s ease-out;
+      pointer-events: none;
+    }
+    @keyframes rippleAnim {
+      to { transform: scale(3); opacity: 0; }
+    }
+
+    /* ===== HERO ===== */
+    .hero {
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      background: linear-gradient(160deg, #0a1220 0%, #0f1a2e 35%, #1a2d44 65%, #223a54 100%);
+      overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(circle at 15% 20%, rgba(201, 168, 76, 0.14) 0%, transparent 45%),
+        radial-gradient(circle at 85% 15%, rgba(74, 124, 158, 0.12) 0%, transparent 45%),
+        radial-gradient(circle at 50% 90%, rgba(201, 168, 76, 0.08) 0%, transparent 55%);
+      pointer-events: none;
+      z-index: 1;
+    }
+    .hero::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      opacity: 0.5;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200' viewBox='0 0 200 200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.025'/%3E%3C/svg%3E");
+      pointer-events: none;
+      z-index: 1;
+    }
+    #heroCanvas {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 1;
+      opacity: 0.55;
+    }
+    .hero-orb {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(80px);
+      pointer-events: none;
+      z-index: 1;
+      animation: floatOrb 14s ease-in-out infinite;
+    }
+    .hero-orb.orb-1 {
+      width: 380px; height: 380px;
+      background: radial-gradient(circle, rgba(201,168,76,0.22), transparent 70%);
+      top: -80px; left: -100px;
+    }
+    .hero-orb.orb-2 {
+      width: 420px; height: 420px;
+      background: radial-gradient(circle, rgba(74,124,158,0.2), transparent 70%);
+      bottom: -140px; right: -120px;
+      animation-delay: -6s;
+    }
+    @keyframes floatOrb {
+      0%, 100% { transform: translate(0, 0) scale(1); }
+      50% { transform: translate(30px, -25px) scale(1.08); }
+    }
+    .hero-content {
+      position: relative;
+      z-index: 2;
+    }
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: rgba(201, 168, 76, 0.12);
+      border: 1px solid rgba(201, 168, 76, 0.3);
+      padding: 0.5rem 1.4rem;
+      border-radius: 100px;
+      font-size: 0.78rem;
+      font-weight: 600;
+      color: #e8d5a3;
+      letter-spacing: 0.06em;
+      backdrop-filter: blur(10px);
+    }
+    .hero-badge .live-dot {
+      width: 6px; height: 6px; border-radius: 50%;
+      background: #6ee7b7;
+      box-shadow: 0 0 8px #6ee7b7;
+      animation: pulseDot 1.8s ease-in-out infinite;
+    }
+    .hero-title {
+      font-size: clamp(2.6rem, 7.5vw, 5.25rem);
+      font-weight: 800;
+      line-height: 1.03;
+      letter-spacing: -0.035em;
+      background: linear-gradient(135deg, #ffffff 0%, #cdd6e2 45%, #e8d5a3 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .hero-subtitle {
+      font-size: clamp(1rem, 1.5vw, 1.25rem);
+      color: rgba(255, 255, 255, 0.68);
+      font-weight: 300;
+      letter-spacing: 0.01em;
+      max-width: 600px;
+      line-height: 1.6;
+    }
+
+    /* ===== FILTROS AVANZADOS ===== */
+    .filtros-avanzados {
+      background: rgba(255, 255, 255, 0.05);
+      backdrop-filter: blur(24px) saturate(160%);
+      -webkit-backdrop-filter: blur(24px) saturate(160%);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 20px;
+      padding: 1.5rem;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1rem;
+      margin-top: 1.5rem;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.25);
+    }
+    .filtro-label-mini {
+      color: rgba(255,255,255,0.45);
+      font-size: 0.68rem;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      margin-bottom: 0.35rem;
+      display: block;
+    }
+    .filtros-avanzados input,
+    .filtros-avanzados select {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 12px;
+      padding: 0.7rem 1rem;
+      color: white;
+      font-size: 0.9rem;
+      outline: none;
+      transition: all var(--transition);
+      width: 100%;
+    }
+    .filtros-avanzados input::placeholder {
+      color: rgba(255, 255, 255, 0.4);
+    }
+    .filtros-avanzados input:focus,
+    .filtros-avanzados select:focus {
+      border-color: var(--secondary);
+      box-shadow: 0 0 0 4px rgba(201, 168, 76, 0.12);
+      background: rgba(255, 255, 255, 0.08);
+    }
+    .filtros-avanzados select option {
+      background: #1a2d44;
+      color: white;
+    }
+    .filtros-avanzados input[type="range"] {
+      padding: 0;
+      height: 6px;
+      -webkit-appearance: none;
+      background: rgba(255,255,255,0.12);
+      border-radius: 10px;
+      cursor: pointer;
+    }
+    .filtros-avanzados input[type="range"]::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      width: 18px; height: 18px;
+      border-radius: 50%;
+      background: var(--secondary);
+      box-shadow: 0 0 0 4px rgba(201,168,76,0.2), 0 2px 8px rgba(0,0,0,0.4);
+      cursor: pointer;
+      transition: transform var(--transition-fast);
+    }
+    .filtros-avanzados input[type="range"]::-webkit-slider-thumb:hover {
+      transform: scale(1.15);
+    }
+    .filtros-avanzados .btn-filtrar {
+      background: linear-gradient(135deg, #c9a84c, #b8943a);
+      border: none;
+      padding: 0.7rem 1.5rem;
+      border-radius: 12px;
+      color: #0f1a2e;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all var(--transition);
+      position: relative;
+      overflow: hidden;
+    }
+    .filtros-avanzados .btn-filtrar:hover {
+      transform: scale(1.02);
+      box-shadow: 0 8px 30px rgba(201, 168, 76, 0.3);
+    }
+
+    /* ===== BOTÓN MAGNÉTICO (búsqueda hero) ===== */
+    .magnetic {
+      transition: transform 0.25s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+
+    /* ===== RANKINGS ===== */
+    .rankings-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+      margin-top: 2rem;
+    }
+    .ranking-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.5rem;
+      transition: all var(--transition);
+      box-shadow: var(--shadow-elev-2);
+      position: relative;
+      overflow: hidden;
+    }
+    .ranking-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--secondary), var(--accent));
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform var(--transition);
+    }
+    .ranking-card:hover::before { transform: scaleX(1); }
+    .ranking-card:hover {
+      transform: translateY(-6px);
+      box-shadow: var(--shadow-elev-3);
+      border-color: rgba(201,168,76,0.35);
+    }
+    .ranking-card .medalla {
+      font-size: 1.5rem;
+      margin-right: 0.5rem;
+    }
+    .ranking-item {
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+      padding: 0.6rem 0;
+      border-bottom: 1px solid var(--border);
+      transition: transform var(--transition-fast);
+    }
+    .ranking-item:hover {
+      transform: translateX(4px);
+    }
+    .ranking-item:last-child {
+      border-bottom: none;
+    }
+
+    /* ===== FILTROS DEL CATÁLOGO ===== */
+    .catalogo-filtros {
+      display: grid;
+      grid-template-columns: 1.6fr 1fr 1fr 1fr auto;
+      gap: 0.9rem;
+      align-items: end;
+      background: var(--bg-subtle);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.25rem;
+      margin-bottom: 2rem;
+      box-shadow: var(--shadow-elev-1);
+    }
+    .catalogo-filtro-campo {
+      display: flex;
+      flex-direction: column;
+      gap: 0.35rem;
+      min-width: 0;
+    }
+    .catalogo-filtro-campo .filtro-label-mini {
+      color: var(--text-light);
+    }
+    .catalogo-filtro-texto {
+      position: relative;
+      justify-content: flex-end;
+    }
+    .catalogo-filtro-texto i {
+      position: absolute;
+      left: 1rem;
+      bottom: 0.85rem;
+      color: var(--text-light);
+      font-size: 0.85rem;
+      pointer-events: none;
+    }
+    .catalogo-filtro-texto input {
+      padding-left: 2.4rem;
+    }
+    .catalogo-filtros input,
+    .catalogo-filtros select {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      padding: 0.65rem 0.9rem;
+      color: var(--text);
+      font-size: 0.88rem;
+      outline: none;
+      transition: all var(--transition-fast);
+      width: 100%;
+    }
+    .catalogo-filtros input::placeholder {
+      color: var(--text-light);
+      opacity: 0.7;
+    }
+    .catalogo-filtros input:focus,
+    .catalogo-filtros select:focus {
+      border-color: var(--secondary);
+      box-shadow: 0 0 0 4px rgba(201, 168, 76, 0.12);
+    }
+    .catalogo-filtro-limpiar {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.4rem;
+      background: transparent;
+      border: 1px solid var(--border);
+      color: var(--text-light);
+      font-size: 0.85rem;
+      font-weight: 600;
+      padding: 0.65rem 1.1rem;
+      border-radius: var(--radius-sm);
+      cursor: pointer;
+      transition: all var(--transition-fast);
+      white-space: nowrap;
+    }
+    .catalogo-filtro-limpiar:hover {
+      border-color: var(--secondary);
+      color: var(--secondary);
+      background: rgba(201, 168, 76, 0.08);
+    }
+    @media (max-width: 900px) {
+      .catalogo-filtros {
+        grid-template-columns: 1fr 1fr;
+      }
+      .catalogo-filtro-texto {
+        grid-column: 1 / -1;
+      }
+    }
+    @media (max-width: 560px) {
+      .catalogo-filtros {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* ===== TARJETAS DE IA ===== */
+    .ia-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 1.75rem;
+    }
+    .ia-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 0;
+      transition: all var(--transition);
+      box-shadow: var(--shadow-elev-2);
+      cursor: pointer;
+      position: relative;
+      overflow: hidden;
+      will-change: transform;
+    }
+    .ia-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--secondary), var(--secondary-light), var(--accent));
+      opacity: 0;
+      transition: opacity var(--transition);
+    }
+    .ia-card::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(600px circle at var(--mx, 50%) var(--my, 0%), rgba(201,168,76,0.06), transparent 40%);
+      opacity: 0;
+      transition: opacity var(--transition-fast);
+      pointer-events: none;
+    }
+    .ia-card:hover::before { opacity: 1; }
+    .ia-card:hover::after { opacity: 1; }
+    .ia-card:hover {
+      transform: translateY(-8px) scale(1.012);
+      box-shadow: var(--shadow-elev-3);
+      border-color: var(--secondary);
+    }
+    .ia-card .card-header {
+      padding: 1.5rem 1.5rem 0.5rem 1.5rem;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+    .ia-card .logo-wrapper {
+      position: relative;
+      flex-shrink: 0;
+    }
+    .ia-card .logo {
+      width: 58px;
+      height: 58px;
+      border-radius: 14px;
+      object-fit: contain;
+      background: var(--bg);
+      padding: 0.4rem;
+      border: 2px solid var(--border);
+      transition: all var(--transition);
+    }
+    .ia-card:hover .logo {
+      border-color: var(--secondary);
+      transform: scale(1.06) rotate(-3deg);
+      box-shadow: 0 6px 18px rgba(201,168,76,0.25);
+    }
+    .ia-card .flag-badge {
+      position: absolute;
+      bottom: -4px;
+      right: -4px;
+      font-size: 1.15rem;
+      background: var(--bg-card);
+      border-radius: 50%;
+      padding: 2px;
+      border: 2px solid var(--border);
+      line-height: 1;
+      box-shadow: var(--shadow-elev-1);
+    }
+    .ia-card .card-title {
+      flex: 1;
+      min-width: 0;
+    }
+    .ia-card .rank-badge {
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      font-weight: 700;
+      color: var(--secondary);
+      display: inline-block;
+      padding: 0.15rem 0.6rem;
+      border-radius: 100px;
+      background: rgba(201, 168, 76, 0.15);
+      margin-bottom: 0.25rem;
+      letter-spacing: 0.02em;
+    }
+    .ia-card .name {
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 1.12rem;
+      color: var(--primary);
+      line-height: 1.2;
+    }
+    .ia-card .company {
+      font-size: 0.8rem;
+      color: var(--text-light);
+      display: flex;
+      align-items: center;
+      gap: 0.35rem;
+      margin-top: 0.15rem;
+    }
+    .ia-card .card-body {
+      padding: 0.5rem 1.5rem 1rem;
+    }
+    .ia-card .desc {
+      color: var(--text-light);
+      font-size: 0.9rem;
+      line-height: 1.6;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+      margin-bottom: 0.9rem;
+    }
+    .ia-card .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+      margin-bottom: 0.9rem;
+    }
+    .ia-card .tag {
+      padding: 0.22rem 0.8rem;
+      border-radius: 100px;
+      font-size: 0.7rem;
+      font-weight: 500;
+      background: rgba(74, 124, 158, 0.1);
+      color: var(--accent);
+      transition: all var(--transition-fast);
+    }
+    .dark .ia-card .tag {
+      background: rgba(74, 124, 158, 0.2);
+    }
+    .ia-card .tag:hover {
+      background: rgba(74, 124, 158, 0.2);
+      transform: scale(1.05);
+    }
+    .ia-card .card-footer {
+      padding: 1rem 1.5rem;
+      border-top: 1px solid var(--border);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: var(--bg-subtle);
+      border-radius: 0 0 var(--radius) var(--radius);
+    }
+    .ia-card .badge-mejor {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      padding: 0.32rem 0.9rem;
+      border-radius: 100px;
+      font-size: 0.74rem;
+      font-weight: 600;
+      background: rgba(201, 168, 76, 0.15);
+      color: var(--secondary);
+      cursor: help;
+      transition: all var(--transition);
+      position: relative;
+    }
+    .ia-card .badge-mejor:hover {
+      background: rgba(201, 168, 76, 0.25);
+      transform: scale(1.05);
+    }
+    .ia-card .badge-mejor .tooltip {
+      visibility: hidden;
+      opacity: 0;
+      position: absolute;
+      bottom: calc(100% + 10px);
+      left: 50%;
+      transform: translateX(-50%);
+      background: var(--primary-dark);
+      color: white;
+      padding: 0.65rem 1rem;
+      border-radius: 10px;
+      font-size: 0.75rem;
+      font-weight: 400;
+      width: 250px;
+      text-align: center;
+      box-shadow: 0 12px 30px rgba(0,0,0,0.3);
+      transition: all 0.3s ease;
+      z-index: 10;
+      line-height: 1.4;
+      pointer-events: none;
+    }
+    .ia-card .badge-mejor .tooltip::after {
+      content: '';
+      position: absolute;
+      top: 100%;
+      left: 50%;
+      transform: translateX(-50%);
+      border: 6px solid transparent;
+      border-top-color: var(--primary-dark);
+    }
+    .ia-card .badge-mejor:hover .tooltip {
+      visibility: visible;
+      opacity: 1;
+      transform: translateX(-50%) translateY(-4px);
+    }
+    .ia-card .btn-ver {
+      color: var(--secondary);
+      font-weight: 600;
+      font-size: 0.85rem;
+      transition: all var(--transition);
+      background: none;
+      border: none;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 0.35rem;
+    }
+    .ia-card .btn-ver:hover {
+      color: var(--secondary-light);
+      transform: translateX(4px);
+      gap: 0.55rem;
+    }
+    .ia-card .status-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.3rem;
+      padding: 0.22rem 0.7rem;
+      border-radius: 100px;
+      font-size: 0.63rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+    }
+    .ia-card .status-badge.gratis {
+      background: #d1fae5;
+      color: #065f46;
+    }
+    .dark .ia-card .status-badge.gratis {
+      background: #065f46;
+      color: #6ee7b7;
+    }
+    .ia-card .status-badge.premium {
+      background: #fef3c7;
+      color: #92400e;
+    }
+    .dark .ia-card .status-badge.premium {
+      background: #92400e;
+      color: #fbbf24;
+    }
+    .ia-card .status-badge.opensource {
+      background: #dbeafe;
+      color: #1e40af;
+    }
+    .dark .ia-card .status-badge.opensource {
+      background: #1e40af;
+      color: #93c5fd;
+    }
+    .ia-card .price-tag {
+      font-family: var(--font-mono);
+      font-size: 0.78rem;
+      font-weight: 600;
+      color: var(--primary);
+    }
+    /* Badge de restricciones éticas */
+    .ia-card .ethical-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.2rem;
+      padding: 0.18rem 0.6rem;
+      border-radius: 100px;
+      font-size: 0.62rem;
+      font-weight: 600;
+    }
+    .ethical-badge.baja {
+      background: #d1fae5;
+      color: #065f46;
+    }
+    .ethical-badge.media {
+      background: #fef3c7;
+      color: #92400e;
+    }
+    .ethical-badge.alta {
+      background: #fef2f2;
+      color: #991b1b;
+    }
+    .ethical-badge.muyAlta {
+      background: #fee2e2;
+      color: #7f1d1d;
+    }
+    .dark .ethical-badge.baja {
+      background: #065f46;
+      color: #6ee7b7;
+    }
+    .dark .ethical-badge.media {
+      background: #92400e;
+      color: #fbbf24;
+    }
+    .dark .ethical-badge.alta {
+      background: #991b1b;
+      color: #fca5a5;
+    }
+    .dark .ethical-badge.muyAlta {
+      background: #7f1d1d;
+      color: #fca5a5;
+    }
+
+    /* Skeleton loading */
+    .skeleton-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.5rem;
+      overflow: hidden;
+      position: relative;
+    }
+    .skeleton-line {
+      background: linear-gradient(90deg, var(--bg-subtle) 25%, var(--border) 37%, var(--bg-subtle) 63%);
+      background-size: 400% 100%;
+      animation: skeletonShine 1.4s ease infinite;
+      border-radius: 8px;
+    }
+    @keyframes skeletonShine {
+      0% { background-position: 100% 50%; }
+      100% { background-position: 0 50%; }
+    }
+
+    /* ===== PAGINACIÓN ===== */
+    .paginacion-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1rem;
+      margin-top: 2.5rem;
+      padding: 1.25rem;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow-elev-1);
+    }
+    .paginacion-info {
+      font-size: 0.9rem;
+      color: var(--text-light);
+      font-family: var(--font-mono);
+    }
+    .paginacion-info strong {
+      color: var(--primary);
+      font-weight: 700;
+    }
+    .paginacion-controles {
+      display: flex;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    .paginacion-btn {
+      padding: 0.5rem 1rem;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      background: var(--bg);
+      color: var(--text);
+      font-size: 0.9rem;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all var(--transition);
+      min-width: 40px;
+      text-align: center;
+    }
+    .paginacion-btn:hover:not(:disabled) {
+      background: var(--secondary);
+      color: var(--primary-dark);
+      border-color: var(--secondary);
+      transform: translateY(-2px);
+      box-shadow: 0 4px 15px rgba(201, 168, 76, 0.3);
+    }
+    .paginacion-btn:disabled {
+      opacity: 0.4;
+      cursor: not-allowed;
+      transform: none;
+    }
+    .paginacion-btn.active {
+      background: var(--secondary);
+      color: var(--primary-dark);
+      border-color: var(--secondary);
+      font-weight: 700;
+    }
+    .paginacion-btn.arrow {
+      font-size: 1.1rem;
+      padding: 0.5rem 1.2rem;
+    }
+
+    /* ===== GUÍA DE SELECCIÓN ===== */
+    .guia-seleccion {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 2rem;
+      margin-top: 2rem;
+      box-shadow: var(--shadow-elev-2);
+    }
+    .guia-seleccion ol {
+      counter-reset: item;
+      list-style: none;
+      padding: 0;
+      display: grid;
+      gap: 0.75rem;
+    }
+    .guia-seleccion li {
+      counter-increment: item;
+      padding: 1rem 1.25rem;
+      background: var(--bg-subtle);
+      border-radius: 14px;
+      border-left: 4px solid var(--secondary);
+      transition: all var(--transition);
+      position: relative;
+      color: var(--text);
+    }
+    .guia-seleccion li:hover {
+      transform: translateX(10px);
+      box-shadow: 0 8px 25px var(--shadow);
+      background: var(--bg-card);
+    }
+    .guia-seleccion li::before {
+      content: counter(item);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 26px;
+      height: 26px;
+      font-family: var(--font-mono);
+      font-weight: 700;
+      font-size: 0.8rem;
+      color: var(--primary-dark);
+      background: linear-gradient(135deg, var(--secondary), var(--secondary-light));
+      border-radius: 50%;
+      margin-right: 0.75rem;
+      flex-shrink: 0;
+    }
+
+    /* ===== GLOSARIO ===== */
+    .glosario-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1.5rem;
+      margin-top: 2rem;
+    }
+    .glosario-item {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.5rem;
+      transition: all var(--transition);
+      position: relative;
+      overflow: hidden;
+    }
+    .glosario-item::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0;
+      width: 3px; height: 100%;
+      background: linear-gradient(180deg, var(--secondary), var(--accent));
+      transform: scaleY(0);
+      transform-origin: top;
+      transition: transform var(--transition);
+    }
+    .glosario-item:hover::before { transform: scaleY(1); }
+    .glosario-item:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-elev-3);
+      border-color: var(--secondary);
+    }
+    .glosario-item dt {
+      font-family: var(--font-display);
+      font-weight: 700;
+      color: var(--primary);
+      font-size: 1.1rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .glosario-item dd {
+      color: var(--text-light);
+      font-size: 0.9rem;
+      line-height: 1.6;
+      margin-top: 0.6rem;
+      border-left: 3px solid var(--secondary);
+      padding-left: 1rem;
+    }
+
+    /* ===== CASOS DE ÉXITO ===== */
+    .casos-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+      margin-top: 2rem;
+    }
+    .caso-item {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.75rem;
+      transition: all var(--transition);
+      position: relative;
+      overflow: hidden;
+    }
+    .caso-item::before {
+      content: '"';
+      position: absolute;
+      top: -10px;
+      right: 14px;
+      font-size: 6rem;
+      color: var(--secondary);
+      opacity: 0.08;
+      font-family: Georgia, serif;
+    }
+    .caso-item:hover {
+      transform: translateY(-6px);
+      box-shadow: var(--shadow-elev-3);
+      border-color: var(--secondary);
+    }
+    .caso-item .emoji {
+      font-size: 2.2rem;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 56px;
+      height: 56px;
+      border-radius: 16px;
+      background: linear-gradient(135deg, rgba(201,168,76,0.14), rgba(74,124,158,0.1));
+      margin-bottom: 1rem;
+    }
+    .caso-item h4 {
+      font-family: var(--font-display);
+      font-weight: 700;
+      color: var(--primary);
+      font-size: 1.05rem;
+    }
+    .caso-item p {
+      color: var(--text-light);
+      font-size: 0.9rem;
+      line-height: 1.65;
+      margin-top: 0.6rem;
+    }
+
+    /* ===== MODAL ===== */
+    .modal-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(6, 10, 20, 0.65);
+      backdrop-filter: blur(12px);
+      z-index: 1000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 1.5rem;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.4s ease;
+    }
+    .modal-overlay.active {
+      opacity: 1;
+      pointer-events: all;
+    }
+    .modal-content {
+      background: var(--bg-card);
+      border-radius: var(--radius-lg);
+      max-width: 700px;
+      width: 100%;
+      max-height: 90vh;
+      overflow-y: auto;
+      padding: 2.5rem;
+      position: relative;
+      transform: scale(0.94) translateY(24px);
+      transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+      box-shadow: 0 50px 100px rgba(0, 0, 0, 0.35);
+      border: 1px solid var(--border);
+    }
+    .modal-overlay.active .modal-content {
+      transform: scale(1) translateY(0);
+    }
+    .modal-close {
+      position: absolute;
+      top: 1.2rem;
+      right: 1.2rem;
+      background: var(--bg-subtle);
+      border: none;
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      font-size: 1.1rem;
+      color: var(--text-light);
+      cursor: pointer;
+      transition: all var(--transition-fast);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .modal-close:hover {
+      color: var(--primary-dark);
+      background: var(--secondary);
+      transform: rotate(90deg);
+    }
+    .modal-body {
+      color: var(--text);
+    }
+    .modal-body h2 {
+      font-family: var(--font-display);
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: var(--primary);
+    }
+    .modal-body .meta {
+      color: var(--text-light);
+      font-size: 0.95rem;
+    }
+    .modal-body .detail-row {
+      display: flex;
+      gap: 0.5rem;
+      padding: 0.7rem 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .modal-body .detail-label {
+      font-weight: 600;
+      min-width: 120px;
+      color: var(--primary);
+      font-size: 0.9rem;
+    }
+    .modal-body .detail-value {
+      color: var(--text-light);
+      font-size: 0.9rem;
+      line-height: 1.55;
+    }
+    .modal-body .btn-visitar {
+      display: inline-flex;
+      align-items: center;
+      background: linear-gradient(135deg, #c9a84c, #b8943a);
+      color: #0f1a2e;
+      padding: 0.75rem 2rem;
+      border-radius: 100px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: all var(--transition);
+      margin-top: 1rem;
+    }
+    .modal-body .btn-visitar:hover {
+      transform: scale(1.03);
+      box-shadow: 0 10px 35px rgba(201, 168, 76, 0.35);
+    }
+
+    /* ===== FOOTER ===== */
+    .footer {
+      background: var(--primary-dark);
+      color: rgba(255, 255, 255, 0.6);
+      padding: 4rem 1.5rem 2rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.06);
+      position: relative;
+      overflow: hidden;
+    }
+    .footer::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at 20% 0%, rgba(201,168,76,0.06), transparent 50%);
+      pointer-events: none;
+    }
+    .footer a {
+      color: rgba(255, 255, 255, 0.55);
+      transition: all var(--transition-fast);
+      text-decoration: none;
+    }
+    .footer a:hover {
+      color: var(--secondary);
+      transform: translateX(2px);
+    }
+    .footer-col h5 {
+      font-family: var(--font-display);
+      color: #fff;
+      font-weight: 700;
+      font-size: 0.85rem;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      margin-bottom: 1.1rem;
+      opacity: 0.85;
+    }
+    .footer-social {
+      width: 38px; height: 38px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.08);
+      transition: all var(--transition-fast);
+    }
+    .footer-social:hover {
+      background: var(--secondary);
+      border-color: var(--secondary);
+      color: var(--primary-dark) !important;
+      transform: translateY(-3px);
+    }
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 768px) {
+      .filtros-avanzados {
+        grid-template-columns: 1fr;
+      }
+      .ia-grid {
+        grid-template-columns: 1fr;
+      }
+      .rankings-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+      .glosario-grid {
+        grid-template-columns: 1fr;
+      }
+      .casos-grid {
+        grid-template-columns: 1fr;
+      }
+      .modal-content {
+        padding: 1.5rem;
+        margin: 1rem;
+      }
+      .section {
+        padding: 3rem 1rem;
+      }
+      .paginacion-controles {
+        gap: 0.3rem;
+      }
+      .paginacion-btn {
+        padding: 0.3rem 0.7rem;
+        font-size: 0.8rem;
+        min-width: 32px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .rankings-grid {
+        grid-template-columns: 1fr;
+      }
+      .stat-number {
+        font-size: 1.6rem;
+      }
+      .paginacion-btn {
+        padding: 0.2rem 0.5rem;
+        font-size: 0.7rem;
+        min-width: 28px;
+      }
+    }
+
+    /* ===== ANIMACIONES ===== */
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    .animate-in {
+      animation: fadeInUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    }
+    .delay-1 { animation-delay: 0.1s; }
+    .delay-2 { animation-delay: 0.2s; }
+    .delay-3 { animation-delay: 0.3s; }
+    .delay-4 { animation-delay: 0.4s; }
+    .delay-5 { animation-delay: 0.5s; }
+
+    /* Scroll reveal (IntersectionObserver) */
+    .reveal {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1), transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .reveal.in-view {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .reveal-scale {
+      opacity: 0;
+      transform: scale(0.92);
+      transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1), transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .reveal-scale.in-view {
+      opacity: 1;
+      transform: scale(1);
+    }
+    .reveal-stagger.in-view > * {
+      animation: fadeInUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) both;
+    }
+    .reveal-stagger.in-view > *:nth-child(1) { animation-delay: 0.05s; }
+    .reveal-stagger.in-view > *:nth-child(2) { animation-delay: 0.12s; }
+    .reveal-stagger.in-view > *:nth-child(3) { animation-delay: 0.19s; }
+    .reveal-stagger.in-view > *:nth-child(4) { animation-delay: 0.26s; }
+    .reveal-stagger.in-view > *:nth-child(5) { animation-delay: 0.33s; }
+    .reveal-stagger.in-view > *:nth-child(6) { animation-delay: 0.4s; }
+
+    /* ===== STATS ===== */
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+      gap: 1.25rem;
+      margin-top: 3rem;
+    }
+    .stat-item {
+      background: rgba(255, 255, 255, 0.05);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.07);
+      border-radius: var(--radius);
+      padding: 1.5rem 1rem;
+      text-align: center;
+      transition: all var(--transition);
+    }
+    .stat-item:hover {
+      background: rgba(255, 255, 255, 0.09);
+      transform: translateY(-5px);
+      border-color: rgba(201, 168, 76, 0.3);
+      box-shadow: 0 15px 40px rgba(0,0,0,0.25);
+    }
+    .stat-number {
+      font-family: var(--font-mono);
+      font-size: 2.2rem;
+      font-weight: 700;
+      color: #e8d5a3;
+      line-height: 1;
+    }
+    .stat-label {
+      font-size: 0.78rem;
+      color: rgba(255, 255, 255, 0.5);
+      margin-top: 0.5rem;
+      font-weight: 400;
+      letter-spacing: 0.04em;
+    }
+
+    /* ===== SECCIONES ===== */
+    .section {
+      padding: 6rem 1.5rem;
+    }
+    .section-eyebrow {
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--secondary);
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      margin-bottom: 0.85rem;
+    }
+    .section-eyebrow::before {
+      content: '';
+      width: 22px;
+      height: 1.5px;
+      background: var(--secondary);
+      display: inline-block;
+    }
+    .section-title {
+      font-size: clamp(1.8rem, 3vw, 2.7rem);
+      font-weight: 800;
+      letter-spacing: -0.025em;
+      color: var(--primary);
+      position: relative;
+      display: inline-block;
+    }
+    .dark .section-title {
+      color: var(--primary);
+    }
+    .section-subtitle {
+      color: var(--text-light);
+      font-size: 1.08rem;
+      max-width: 600px;
+      margin-top: 1rem;
+      line-height: 1.6;
+    }
+
+    .hero-search {
+      background: rgba(255, 255, 255, 0.06);
+      backdrop-filter: blur(24px) saturate(160%);
+      -webkit-backdrop-filter: blur(24px) saturate(160%);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: 100px;
+      padding: 0.4rem;
+      display: flex;
+      gap: 0.5rem;
+      transition: all var(--transition);
+      box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+    }
+    .hero-search:focus-within {
+      border-color: rgba(201, 168, 76, 0.5);
+      box-shadow: 0 0 0 5px rgba(201, 168, 76, 0.08), 0 20px 60px rgba(0,0,0,0.3);
+    }
+    .hero-search input,
+    .hero-search select {
+      background: transparent;
+      border: none;
+      padding: 0.75rem 1.5rem;
+      color: white;
+      font-size: 0.95rem;
+      outline: none;
+      flex: 1;
+      min-width: 0;
+    }
+    .hero-search input::placeholder {
+      color: rgba(255, 255, 255, 0.4);
+    }
+    .hero-search select {
+      color: white;
+      cursor: pointer;
+      appearance: none;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='rgba(255,255,255,0.5)' d='M6 8L1 3h10z'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 1rem center;
+      padding-right: 2.5rem;
+    }
+    .hero-search select option {
+      background: #1a2d44;
+      color: white;
+    }
+    .hero-search .btn-search {
+      background: linear-gradient(135deg, #c9a84c, #b8943a);
+      border: none;
+      padding: 0.75rem 2rem;
+      border-radius: 100px;
+      color: #0f1a2e;
+      font-weight: 600;
+      font-size: 0.95rem;
+      cursor: pointer;
+      transition: all var(--transition);
+      white-space: nowrap;
+    }
+    .hero-search .btn-search:hover {
+      transform: scale(1.02);
+      box-shadow: 0 8px 30px rgba(201, 168, 76, 0.3);
+    }
+
+    .badge-mejor {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      padding: 0.3rem 0.9rem;
+      border-radius: 100px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      background: rgba(201, 168, 76, 0.15);
+      color: var(--secondary);
+    }
+    .tag {
+      padding: 0.2rem 0.8rem;
+      border-radius: 100px;
+      font-size: 0.7rem;
+      font-weight: 500;
+      background: rgba(74, 124, 158, 0.1);
+      color: var(--accent);
+      display: inline-block;
+    }
+
+    /* ================================================================
+       NUEVA SECCIÓN: CATÁLOGO DE RECURSOS DE INTELIGENCIA ARTIFICIAL
+       ================================================================ */
+    .recursos-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 1.75rem;
+      margin-top: 2rem;
+    }
+
+    .recurso-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.5rem;
+      transition: all var(--transition);
+      box-shadow: var(--shadow-elev-2);
+      position: relative;
+      overflow: hidden;
+      cursor: pointer;
+    }
+    .recurso-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--secondary), var(--secondary-light), var(--accent));
+      opacity: 0;
+      transition: opacity var(--transition);
+    }
+    .recurso-card:hover::before {
+      opacity: 1;
+    }
+    .recurso-card:hover {
+      transform: translateY(-6px);
+      box-shadow: var(--shadow-elev-3);
+      border-color: var(--secondary);
+    }
+    .recurso-card .recurso-header {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 0.75rem;
+    }
+    .recurso-card .recurso-icon {
+      width: 48px;
+      height: 48px;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+      background: linear-gradient(135deg, rgba(201,168,76,0.15), rgba(74,124,158,0.1));
+      flex-shrink: 0;
+    }
+    .recurso-card .recurso-nombre {
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 1.1rem;
+      color: var(--primary);
+    }
+    .recurso-card .recurso-categoria {
+      font-size: 0.75rem;
+      color: var(--text-light);
+      background: var(--bg-subtle);
+      padding: 0.2rem 0.8rem;
+      border-radius: 100px;
+      display: inline-block;
+      margin-bottom: 0.5rem;
+    }
+    .recurso-card .recurso-definicion {
+      color: var(--text-light);
+      font-size: 0.9rem;
+      line-height: 1.6;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+      margin-bottom: 0.75rem;
+    }
+    .recurso-card .recurso-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+      margin-bottom: 0.75rem;
+    }
+    .recurso-card .recurso-tag {
+      padding: 0.2rem 0.7rem;
+      border-radius: 100px;
+      font-size: 0.65rem;
+      font-weight: 600;
+      background: rgba(74, 124, 158, 0.1);
+      color: var(--accent);
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+    .recurso-card .recurso-tag.agente-si {
+      background: #d1fae5;
+      color: #065f46;
+    }
+    .dark .recurso-card .recurso-tag.agente-si {
+      background: #065f46;
+      color: #6ee7b7;
+    }
+    .recurso-card .recurso-tag.agente-no {
+      background: #fef3c7;
+      color: #92400e;
+    }
+    .dark .recurso-card .recurso-tag.agente-no {
+      background: #92400e;
+      color: #fbbf24;
+    }
+    .recurso-card .recurso-tag.gratis-si {
+      background: #d1fae5;
+      color: #065f46;
+    }
+    .dark .recurso-card .recurso-tag.gratis-si {
+      background: #065f46;
+      color: #6ee7b7;
+    }
+    .recurso-card .recurso-tag.gratis-no {
+      background: #fef2f2;
+      color: #991b1b;
+    }
+    .dark .recurso-card .recurso-tag.gratis-no {
+      background: #991b1b;
+      color: #fca5a5;
+    }
+    .recurso-card .recurso-footer {
+      display: flex;
+      justify-content: flex-end;
+      padding-top: 0.75rem;
+      border-top: 1px solid var(--border);
+      margin-top: 0.5rem;
+    }
+    .recurso-card .btn-ver-recurso {
+      color: var(--secondary);
+      font-weight: 600;
+      font-size: 0.85rem;
+      transition: all var(--transition);
+      background: none;
+      border: none;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 0.35rem;
+    }
+    .recurso-card .btn-ver-recurso:hover {
+      color: var(--secondary-light);
+      transform: translateX(4px);
+      gap: 0.55rem;
+    }
+
+    /* Filtros de recursos */
+    .recursos-filtros {
+      display: grid;
+      grid-template-columns: 1.2fr 1fr 1fr 0.8fr 0.8fr 0.8fr auto;
+      gap: 0.75rem;
+      align-items: end;
+      background: var(--bg-subtle);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.25rem;
+      margin-bottom: 2rem;
+      box-shadow: var(--shadow-elev-1);
+    }
+    .recursos-filtros .filtro-label-mini {
+      color: var(--text-light);
+    }
+    .recursos-filtros input,
+    .recursos-filtros select {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      padding: 0.6rem 0.8rem;
+      color: var(--text);
+      font-size: 0.85rem;
+      outline: none;
+      transition: all var(--transition-fast);
+      width: 100%;
+    }
+    .recursos-filtros input:focus,
+    .recursos-filtros select:focus {
+      border-color: var(--secondary);
+      box-shadow: 0 0 0 4px rgba(201, 168, 76, 0.12);
+    }
+    .recursos-filtros input::placeholder {
+      color: var(--text-light);
+      opacity: 0.7;
+    }
+    .recursos-filtro-limpiar {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.4rem;
+      background: transparent;
+      border: 1px solid var(--border);
+      color: var(--text-light);
+      font-size: 0.8rem;
+      font-weight: 600;
+      padding: 0.6rem 1rem;
+      border-radius: var(--radius-sm);
+      cursor: pointer;
+      transition: all var(--transition-fast);
+      white-space: nowrap;
+      height: 42px;
+      align-self: end;
+    }
+    .recursos-filtro-limpiar:hover {
+      border-color: var(--secondary);
+      color: var(--secondary);
+      background: rgba(201, 168, 76, 0.08);
+    }
+    @media (max-width: 1024px) {
+      .recursos-filtros {
+        grid-template-columns: 1fr 1fr 1fr;
+      }
+      .recursos-filtro-texto {
+        grid-column: 1 / -1;
+      }
+    }
+    @media (max-width: 640px) {
+      .recursos-filtros {
+        grid-template-columns: 1fr 1fr;
+      }
+      .recursos-filtro-texto {
+        grid-column: 1 / -1;
+      }
+      .recursos-filtro-limpiar {
+        grid-column: 1 / -1;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Barra de progreso de scroll -->
+  <div class="scroll-progress" id="scrollProgress"></div>
+
+  <!-- ===== NAVBAR ===== -->
+  <nav class="navbar fixed top-0 left-0 w-full z-50" id="navbar">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between h-16">
+      <div class="flex items-center gap-2">
+        <span class="navbar-brand">AI Global Hub<span class="dot"></span></span>
+        <span class="hidden sm:inline text-xs font-medium text-gray-400 dark:text-gray-500">· Catálogo</span>
+      </div>
+      <div class="hidden md:flex items-center gap-8 text-sm">
+        <a href="#rankings" class="nav-link">Rankings</a>
+        <a href="#catalogo" class="nav-link">Catálogo</a>
+        <a href="#guia" class="nav-link">Guía</a>
+        <a href="#glosario" class="nav-link">Glosario</a>
+        <a href="#casos" class="nav-link">Casos</a>
+        <a href="#recursos" class="nav-link">Recursos</a>
+      </div>
+      <div class="flex items-center gap-3">
+        <button id="modoOscuro" class="btn-icon-nav">
+          <i class="fas fa-moon"></i>
+        </button>
+        <button class="btn-add ripple-el">
+          <i class="fas fa-plus mr-1.5"></i> Añadir IA
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ===== HERO ===== -->
+  <section class="hero">
+    <canvas id="heroCanvas"></canvas>
+    <div class="hero-orb orb-1"></div>
+    <div class="hero-orb orb-2"></div>
+    <div class="hero-content max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full py-20 md:py-28">
+      <div class="animate-in">
+        <span class="hero-badge mb-6 inline-block">
+          <span class="live-dot"></span> CATÁLOGO MUNDIAL DE IA · ACTUALIZADO
+        </span>
+        <h1 class="hero-title">AI Global Hub</h1>
+        <p class="hero-subtitle mt-4">
+          El catálogo más completo de inteligencias artificiales del mundo.<br />
+          Encuentra la IA perfecta para tu trabajo.
+        </p>
+      </div>
+
+      <!-- Búsqueda y filtros avanzados -->
+      <div class="mt-8 animate-in delay-2">
+        <div class="hero-search">
+          <input id="buscador" type="text" placeholder="🔍 Buscar por nombre, empresa, país..." />
+          <select id="filtroPais">
+            <option value="">Todos los países</option>
+          </select>
+          <select id="filtroTipo">
+            <option value="">Todos los tipos</option>
+            <option value="programacion">💻 Programación</option>
+            <option value="diseno">🎨 Diseño</option>
+            <option value="investigacion">🔬 Investigación</option>
+            <option value="marketing">📈 Marketing</option>
+            <option value="educacion">📚 Educación</option>
+            <option value="empresas">🏢 Empresas</option>
+            <option value="finanzas">💰 Finanzas</option>
+            <option value="salud">🏥 Salud</option>
+            <option value="ciberseguridad">🛡️ Ciberseguridad</option>
+            <option value="data">📊 Data Science</option>
+          </select>
+          <button class="btn-search magnetic" onclick="aplicarFiltros()">
+            <i class="fas fa-search mr-2"></i> Explorar
+          </button>
+        </div>
+
+        <!-- Filtros avanzados -->
+        <div class="filtros-avanzados">
+          <div>
+            <span class="filtro-label-mini">Puntuación mínima</span>
+            <input type="range" min="0" max="10" step="0.5" id="filtroPuntuacion"
+                   oninput="document.getElementById('puntuacionLabel').textContent = 'Puntuación mínima: ' + this.value" />
+            <span id="puntuacionLabel" style="color:rgba(255,255,255,0.6);font-size:0.78rem;display:block;margin-top:0.4rem;">Puntuación mínima: 0</span>
+          </div>
+
+          <div>
+            <span class="filtro-label-mini">Precio máximo</span>
+            <input type="number" placeholder="Precio máximo (USD)" id="filtroPrecio" />
+          </div>
+
+          <div>
+            <span class="filtro-label-mini">Modelo</span>
+            <select id="filtroModelo">
+              <option value="">Todos los modelos</option>
+              <option value="GPT">GPT</option>
+              <option value="Claude">Claude</option>
+              <option value="Gemini">Gemini</option>
+              <option value="Llama">Llama</option>
+              <option value="Mistral">Mistral</option>
+            </select>
+          </div>
+
+          <button class="btn-filtrar ripple-el" onclick="aplicarFiltros()">
+            <i class="fas fa-sliders-h mr-2"></i> Aplicar filtros
+          </button>
+        </div>
+      </div>
+
+      <!-- Stats -->
+      <div class="stats-grid animate-in delay-3">
+        <div class="stat-item">
+          <div class="stat-number" id="totalIA">0</div>
+          <div class="stat-label">Total IA</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number" id="totalPaises">0</div>
+          <div class="stat-label">Países</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number" id="totalGratuitas">0</div>
+          <div class="stat-label">Gratuitas</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number" id="totalOpenSource">0</div>
+          <div class="stat-label">Open Source</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== RANKINGS DINÁMICOS ===== -->
+  <section id="rankings" class="section" style="background: var(--bg);">
+    <div class="max-w-7xl mx-auto">
+      <div class="text-center mb-12 reveal">
+        <span class="section-eyebrow">Clasificación en vivo</span>
+        <h2 class="section-title block">🏆 Rankings por Categoría</h2>
+        <p class="section-subtitle mx-auto">
+          Descubre las mejores IA según su especialidad y rendimiento
+        </p>
+      </div>
+
+      <div class="rankings-grid reveal-stagger reveal" id="rankingsContainer">
+        <!-- Generado por JavaScript -->
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== CATÁLOGO ===== -->
+  <section id="catalogo" class="section" style="background: var(--bg-card);">
+    <div class="max-w-7xl mx-auto">
+      <div class="flex flex-col sm:flex-row sm:items-center justify-between mb-8 gap-4 reveal">
+        <div>
+          <span class="section-eyebrow">Explora y compara</span>
+          <h2 class="section-title block">📋 Catálogo de IA</h2>
+          <p class="text-sm text-gray-500 dark:text-gray-400 mt-2">Explora y compara las mejores inteligencias artificiales del mundo</p>
+        </div>
+        <span id="resultadosCount" class="text-sm font-medium text-gray-500 dark:text-gray-400 bg-gray-100 dark:bg-gray-800 px-4 py-2 rounded-full">
+          0 resultados
+        </span>
+      </div>
+
+      <!-- Filtros propios del catálogo: texto, funcionalidad, categoría y precio -->
+      <div class="catalogo-filtros reveal" id="catalogoFiltros">
+        <div class="catalogo-filtro-campo catalogo-filtro-texto">
+          <i class="fas fa-search"></i>
+          <input type="text" id="catBuscador" placeholder="Buscar por nombre, empresa o país..." aria-label="Buscar en el catálogo" />
+        </div>
+        <div class="catalogo-filtro-campo">
+          <label for="catFiltroTipo" class="filtro-label-mini">Funcionalidad</label>
+          <select id="catFiltroTipo" aria-label="Filtrar por funcionalidad">
+            <option value="">Todas las funcionalidades</option>
+            <option value="programacion">💻 Programación</option>
+            <option value="diseno">🎨 Diseño</option>
+            <option value="investigacion">🔬 Investigación</option>
+            <option value="marketing">📈 Marketing</option>
+            <option value="educacion">📚 Educación</option>
+            <option value="empresas">🏢 Empresas</option>
+            <option value="finanzas">💰 Finanzas</option>
+            <option value="salud">🏥 Salud</option>
+            <option value="ciberseguridad">🛡️ Ciberseguridad</option>
+            <option value="data">📊 Data Science</option>
+          </select>
+        </div>
+        <div class="catalogo-filtro-campo">
+          <label for="catFiltroCategoria" class="filtro-label-mini">Categoría / País</label>
+          <select id="catFiltroCategoria" aria-label="Filtrar por categoría o país">
+            <option value="">Todas las categorías</option>
+          </select>
+        </div>
+        <div class="catalogo-filtro-campo">
+          <label for="catFiltroPrecio" class="filtro-label-mini">Precio máximo (USD)</label>
+          <input type="number" id="catFiltroPrecio" placeholder="Sin límite" min="0" aria-label="Precio máximo en dólares" />
+        </div>
+        <button id="catLimpiarFiltros" class="catalogo-filtro-limpiar ripple-el" type="button">
+          <i class="fas fa-rotate-left"></i> Limpiar
+        </button>
+      </div>
+
+      <div id="gridIA" class="ia-grid">
+        <!-- Inyectado con JS -->
+      </div>
+
+      <!-- PAGINACIÓN -->
+      <div id="paginacionContainer" class="paginacion-container">
+        <div class="paginacion-info" id="paginacionInfo">
+          Mostrando <strong id="inicioRango">0</strong> - <strong id="finRango">0</strong> de <strong id="totalItems">0</strong> IAs
+        </div>
+        <div class="paginacion-controles" id="paginacionControles">
+          <!-- Generado por JavaScript -->
+        </div>
+      </div>
+
+      <div id="sinResultados" class="hidden text-center py-20">
+        <i class="fas fa-search text-5xl text-gray-300 dark:text-gray-600 mb-4 block"></i>
+        <p class="text-xl text-gray-500 dark:text-gray-400">No se encontraron IA que coincidan con tu búsqueda.</p>
+        <p class="text-sm text-gray-400 dark:text-gray-500 mt-2">Intenta con otros términos o filtros</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== GUÍA DE SELECCIÓN ===== -->
+  <section id="guia" class="section" style="background: var(--bg);">
+    <div class="max-w-7xl mx-auto">
+      <div class="text-center mb-12 reveal">
+        <span class="section-eyebrow">Paso a paso</span>
+        <h2 class="section-title block">🎯 ¿Cómo elegir la IA perfecta?</h2>
+        <p class="section-subtitle mx-auto">
+          Sigue esta guía paso a paso para encontrar la inteligencia artificial que mejor se adapte a tus necesidades
+        </p>
+      </div>
+
+      <div class="guia-seleccion reveal">
+        <ol>
+          <li>
+            <strong>Define tu objetivo principal:</strong> ¿Qué necesitas hacer? (programar, diseñar, investigar, crear contenido, analizar datos...)
+          </li>
+          <li>
+            <strong>Evalúa tu presupuesto:</strong> ¿Buscas opciones gratuitas, de precio moderado o soluciones empresariales premium?
+          </li>
+          <li>
+            <strong>Considera la integración:</strong> ¿Necesitas API para integrar con tus herramientas o funciona como aplicación standalone?
+          </li>
+          <li>
+            <strong>Revisa las capacidades específicas:</strong> ¿Qué características son imprescindibles? (multimodalidad, contexto largo, agentes, etc.)
+          </li>
+          <li>
+            <strong>Prueba antes de decidir:</strong> Muchas plataformas ofrecen versiones gratuitas de prueba para evaluar su rendimiento.
+          </li>
+          <li>
+            <strong>Consulta la comunidad:</strong> Lee reseñas, casos de éxito y experiencias de otros usuarios en tu mismo sector.
+          </li>
+        </ol>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== GLOSARIO ===== -->
+  <section id="glosario" class="section" style="background: var(--bg-card);">
+    <div class="max-w-7xl mx-auto">
+      <div class="text-center mb-12 reveal">
+        <span class="section-eyebrow">Terminología clave</span>
+        <h2 class="section-title block">📚 Diccionario de Términos de IA</h2>
+        <p class="section-subtitle mx-auto">
+          Conoce la terminología clave para entender mejor el mundo de la inteligencia artificial
+        </p>
+      </div>
+
+      <div class="glosario-grid reveal-stagger reveal">
+        <div class="glosario-item">
+          <dt>🧠 Multimodal</dt>
+          <dd>Capacidad de procesar y generar diferentes tipos de datos (texto, imágenes, audio, video) en un mismo modelo.</dd>
+        </div>
+        <div class="glosario-item">
+          <dt>📝 Contexto largo</dt>
+          <dd>Habilidad de mantener y procesar grandes cantidades de información en una sola conversación (hasta 200K tokens o más).</dd>
+        </div>
+        <div class="glosario-item">
+          <dt>🔓 Open Source</dt>
+          <dd>Código fuente disponible públicamente para que cualquiera pueda usarlo, modificarlo y distribuirlo libremente.</dd>
+        </div>
+        <div class="glosario-item">
+          <dt>🤖 Agentes</dt>
+          <dd>IA que pueden realizar tareas autónomas, tomar decisiones y ejecutar acciones sin intervención humana constante.</dd>
+        </div>
+        <div class="glosario-item">
+          <dt>⚡ Fine-tuning</dt>
+          <dd>Proceso de ajustar un modelo pre-entrenado para que se especialice en tareas o dominios específicos.</dd>
+        </div>
+        <div class="glosario-item">
+          <dt>🌐 API</dt>
+          <dd>Interfaz de programación que permite integrar la IA en otras aplicaciones y servicios de forma automatizada.</dd>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== CASOS DE ÉXITO ===== -->
+  <section id="casos" class="section" style="background: var(--bg);">
+    <div class="max-w-7xl mx-auto">
+      <div class="text-center mb-12 reveal">
+        <span class="section-eyebrow">Historias reales</span>
+        <h2 class="section-title block">💡 Casos de Éxito con IA</h2>
+        <p class="section-subtitle mx-auto">
+          Historias reales de cómo la IA está transformando diferentes industrias y profesiones
+        </p>
+      </div>
+
+      <div class="casos-grid reveal-stagger reveal">
+        <div class="caso-item">
+          <span class="emoji">🚀</span>
+          <h4>Startup de Marketing multiplica su productividad</h4>
+          <p>Una agencia de marketing digital utilizó ChatGPT para generar contenido, Copy.ai para campañas y Midjourney para diseño visual, aumentando su producción en 5x y reduciendo costos en un 60%.</p>
+        </div>
+        <div class="caso-item">
+          <span class="emoji">💻</span>
+          <h4>Desarrollador programa 2x más rápido con Copilot</h4>
+          <p>Un equipo de desarrollo redujo el tiempo de programación en un 40% utilizando GitHub Copilot para autocompletar código, generar tests y documentar automáticamente sus proyectos.</p>
+        </div>
+        <div class="caso-item">
+          <span class="emoji">🔬</span>
+          <h4>Investigador acelera descubrimientos con Claude</h4>
+          <p>Un investigador académico utiliza Claude para analizar documentos científicos, extraer información clave y generar resúmenes de literatura, reduciendo el tiempo de revisión de semanas a días.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================================================================ -->
+  <!-- NUEVA SECCIÓN: CATÁLOGO DE RECURSOS DE INTELIGENCIA ARTIFICIAL  -->
+  <!-- ================================================================ -->
+  <section id="recursos" class="section" style="background: var(--bg-card);">
+    <div class="max-w-7xl mx-auto">
+      <div class="text-center mb-12 reveal">
+        <span class="section-eyebrow">Recursos Especializados</span>
+        <h2 class="section-title block">📚 Catálogo de Recursos de Inteligencia Artificial</h2>
+        <p class="section-subtitle mx-auto">
+          Explora una colección curada de recursos, frameworks y herramientas de IA para potenciar tus proyectos
+        </p>
+      </div>
+
+      <!-- Filtros de Recursos -->
+      <div class="recursos-filtros reveal" id="recursosFiltros">
+        <div class="recursos-filtro-campo recursos-filtro-texto">
+          <input type="text" id="recursosBuscador" placeholder="🔍 Buscar recurso..." aria-label="Buscar en el catálogo de recursos" />
+        </div>
+        <div class="recursos-filtro-campo">
+          <label for="recursosFiltroCategoria" class="filtro-label-mini">Categoría</label>
+          <select id="recursosFiltroCategoria" aria-label="Filtrar por categoría">
+            <option value="">Todas las categorías</option>
+          </select>
+        </div>
+        <div class="recursos-filtro-campo">
+          <label for="recursosFiltroTipoIA" class="filtro-label-mini">Tipo de IA</label>
+          <select id="recursosFiltroTipoIA" aria-label="Filtrar por tipo de IA">
+            <option value="">Todos los tipos</option>
+          </select>
+        </div>
+        <div class="recursos-filtro-campo">
+          <label for="recursosFiltroModelo" class="filtro-label-mini">Modelo de IA</label>
+          <select id="recursosFiltroModelo" aria-label="Filtrar por modelo de IA">
+            <option value="">Todos los modelos</option>
+          </select>
+        </div>
+        <div class="recursos-filtro-campo">
+          <label for="recursosFiltroAgentes" class="filtro-label-mini">Agentes IA</label>
+          <select id="recursosFiltroAgentes" aria-label="Filtrar por soporte de agentes IA">
+            <option value="">Todos</option>
+            <option value="si">Sí</option>
+            <option value="no">No</option>
+          </select>
+        </div>
+        <div class="recursos-filtro-campo">
+          <label for="recursosFiltroGratis" class="filtro-label-mini">Versión Gratuita</label>
+          <select id="recursosFiltroGratis" aria-label="Filtrar por versión gratuita">
+            <option value="">Todos</option>
+            <option value="si">Sí</option>
+            <option value="no">No</option>
+          </select>
+        </div>
+        <button id="recursosLimpiarFiltros" class="recursos-filtro-limpiar ripple-el" type="button">
+          <i class="fas fa-rotate-left"></i> Limpiar
+        </button>
+      </div>
+
+      <!-- Grid de Recursos -->
+      <div id="gridRecursos" class="recursos-grid">
+        <!-- Inyectado con JS -->
+      </div>
+
+      <div id="sinResultadosRecursos" class="hidden text-center py-20">
+        <i class="fas fa-search text-5xl text-gray-300 dark:text-gray-600 mb-4 block"></i>
+        <p class="text-xl text-gray-500 dark:text-gray-400">No se encontraron recursos que coincidan con tu búsqueda.</p>
+        <p class="text-sm text-gray-400 dark:text-gray-500 mt-2">Intenta con otros términos o filtros</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== MODAL PRINCIPAL (IA) ===== -->
+  <div id="modal" class="modal-overlay" onclick="if(event.target===this) cerrarModal()">
+    <div class="modal-content">
+      <button class="modal-close" onclick="cerrarModal()">
+        <i class="fas fa-times"></i>
+      </button>
+      <div id="modalBody" class="modal-body">
+        <!-- Inyectado con JS -->
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== MODAL DE RECURSOS ===== -->
+  <div id="modalRecurso" class="modal-overlay" onclick="if(event.target===this) cerrarModalRecurso()">
+    <div class="modal-content">
+      <button class="modal-close" onclick="cerrarModalRecurso()">
+        <i class="fas fa-times"></i>
+      </button>
+      <div id="modalRecursoBody" class="modal-body">
+        <!-- Inyectado con JS -->
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="footer">
+    <div class="max-w-7xl mx-auto relative">
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-8 pb-10">
+        <div class="col-span-2 md:col-span-1">
+          <span class="font-bold text-white text-lg" style="font-family: var(--font-display);">AI Global Hub</span>
+          <p class="text-sm mt-3 opacity-70 leading-relaxed">El catálogo mundial de inteligencia artificial, curado y actualizado.</p>
+          <div class="flex gap-3 mt-5">
+            <a href="#" class="footer-social"><i class="fab fa-twitter"></i></a>
+            <a href="#" class="footer-social"><i class="fab fa-github"></i></a>
+            <a href="#" class="footer-social"><i class="fab fa-linkedin"></i></a>
+          </div>
+        </div>
+        <div class="footer-col">
+          <h5>Explorar</h5>
+          <div class="flex flex-col gap-2.5 text-sm">
+            <a href="#rankings">Rankings</a>
+            <a href="#catalogo">Catálogo</a>
+            <a href="#guia">Guía de selección</a>
+            <a href="#recursos">Recursos</a>
+          </div>
+        </div>
+        <div class="footer-col">
+          <h5>Recursos</h5>
+          <div class="flex flex-col gap-2.5 text-sm">
+            <a href="#glosario">Glosario</a>
+            <a href="#casos">Casos de éxito</a>
+          </div>
+        </div>
+        <div class="footer-col">
+          <h5>Comunidad</h5>
+          <div class="flex flex-col gap-2.5 text-sm">
+            <a href="#">Sugerir una IA</a>
+            <a href="#">Reportar un error</a>
+          </div>
+        </div>
+      </div>
+      <div class="pt-6 border-t flex flex-col sm:flex-row items-center justify-between gap-3 text-sm" style="border-color: rgba(255,255,255,0.08);">
+        <div>&copy; 2025 AI Global Hub · Hecho con <i class="fas fa-heart text-secondary"></i> para la comunidad</div>
+        <div class="opacity-60">Catálogo mundial de IA</div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // ======================== DATOS COMPLETOS (19 IAS) ========================
+    const ias = [
+      {
+        id: 1,
+        nombre: "ChatGPT",
+        empresa: "OpenAI",
+        pais: "EE.UU.",
+        flag: "🇺🇸",
+        logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/0/04/ChatGPT_logo.svg/320px-ChatGPT_logo.svg.png",
+        descripcion: "Asistente conversacional con capacidades avanzadas de razonamiento y generación de texto.",
+        modelos: "GPT-5.5",
+        gratuito: true,
+        restriccion: "muyAlta",
+        tipos: ["investigacion", "programacion", "empresas", "data"],
+        mejorPara: "investigacion",
+        puntuacion: 9.5,
+        tooltip: "Ideal para investigación, programación, análisis de documentos y ciencia de datos con capacidades avanzadas de razonamiento.",
+        sitio: "https://chatgpt.com",
+        historia: "Lanzado por OpenAI en 2022, revolucionó la interacción humano-máquina.",
+        capacidades: "Razonamiento, programación, escritura, investigación, matemáticas, imágenes, audio."
+      },
+      {
+        id: 2,
+        nombre: "Claude",
+        empresa: "Anthropic",
+        pais: "EE.UU.",
+        flag: "🇺🇸",
+        logo: "https://assets.anthropic.com/images/claude-logo.png",
+        descripcion: "Asistente enfocado en seguridad y razonamiento profundo, con gran contexto.",
+        modelos: "Claude Sonnet 4.6",
+        gratuito: true,
+        restriccion: "muyAlta",
+        tipos: ["investigacion", "programacion", "empresas", "finanzas"],
+        mejorPara: "investigacion",
+        puntuacion: 9.2,
+        tooltip: "Excelente para redacción, análisis jurídico, investigación y programación con alta precisión.",
+        sitio: "https://claude.ai",
+        historia: "Desarrollado por Anthropic, prioriza la IA constitucional y la transparencia.",
+        capacidades: "Contexto largo, razonamiento, programación, análisis financiero, escritura."
+      },
+      {
+        id: 3,
+        nombre: "Gemini",
+        empresa: "Google DeepMind",
+        pais: "EE.UU.",
+        flag: "🇺🇸",
+        logo: "https://www.gstatic.com/lamda/images/gemini_logo_32px.png",
+        descripcion: "Modelo multimodal nativo de Google, integrado en sus servicios.",
+        modelos: "Gemini 3.x",
+        gratuito: true,
+        restriccion: "muyAlta",
+        tipos: ["investigacion", "programacion", "educacion", "empresas", "data"],
+        mejorPara: "investigacion",
+        puntuacion: 9.0,
+        tooltip: "Perfecto para investigación, integración con Google Workspace y programación con capacidades multimodales.",
+        sitio: "https://gemini.google.com",
+        historia: "Gemini es la familia de modelos más avanzada de Google, con capacidades multimodales.",
+        capacidades: "Multimodal, razonamiento, programación, análisis de datos, imágenes, video."
+      },
+      {
+        id: 4,
+        nombre: "Microsoft Copilot",
+        empresa: "Microsoft",
+        pais: "EE.UU.",
+        flag: "🇺🇸",
+        logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4a/GitHub_Copilot_logo.svg/320px-GitHub_Copilot_logo.svg.png",
+        descripcion: "Asistente de IA integrado en el ecosistema Microsoft.",
+        modelos: "GPT + Phi",
+        gratuito: true,
+        restriccion: "muyAlta",
+        tipos: ["programacion", "empresas"],
+        mejorPara: "empresas",
+        puntuacion: 8.0,
+        tooltip: "Ideal para Office y consultas empresariales; como asistente de programación queda por debajo de Claude, DeepSeek, Grok o ChatGPT.",
+        sitio: "https://copilot.microsoft.com",
+        historia: "Copilot es la apuesta de Microsoft para integrar IA en todos sus productos.",
+        capacidades: "Office, desarrollo, consultas, automatización."
+      },
+      {
+        id: 5,
+        nombre: "Perplexity AI",
+        empresa: "Perplexity",
+        pais: "EE.UU.",
+        flag: "🇺🇸",
+        logo: "https://perplexity.ai/favicon.ico",
+        descripcion: "Motor de búsqueda conversacional con respuestas precisas y citas.",
+        modelos: "Sonar, GPT, Claude, Gemini",
+        gratuito: true,
+        restriccion: "alta",
+        tipos: ["investigacion", "educacion", "marketing"],
+        mejorPara: "investigacion",
+        puntuacion: 8.7,
+        tooltip: "Combina búsqueda en tiempo real con IA generativa, ideal para investigación con fuentes verificadas.",
+        sitio: "https://www.perplexity.ai",
+        historia: "Perplexity combina búsqueda en tiempo real con IA generativa.",
+        capacidades: "Búsqueda web, razonamiento, citas, resúmenes."
+      },
+      {
+        id: 6,
+        nombre: "Grok",
+        empresa: "xAI",
+        pais: "EE.UU.",
+        flag: "🇺🇸",
+        logo: "https://x.ai/favicon.ico",
+        descripcion: "Asistente de Elon Musk con respuestas directas y acceso a X.",
+        modelos: "Grok 4",
+        gratuito: true,
+        restriccion: "media",
+        tipos: ["investigacion", "programacion"],
+        mejorPara: "investigacion",
+        puntuacion: 7.8,
+        tooltip: "Ofrece acceso a datos en tiempo real de X (Twitter) para investigación de actualidad y programación.",
+        sitio: "https://grok.com",
+        historia: "xAI fue fundada por Elon Musk para competir en el espacio de IA.",
+        capacidades: "Razonamiento, programación, acceso a datos de X."
+      },
+      {
+        id: 7,
+        nombre: "DeepSeek",
+        empresa: "DeepSeek",
+        pais: "China",
+        flag: "🇨🇳",
+        logo: "https://deepseek.com/logo.png",
+        descripcion: "Modelo chino con rendimiento competitivo y bajo costo.",
+        modelos: "R1, V3",
+        gratuito: true,
+        restriccion: "media",
+        tipos: ["programacion", "investigacion", "data"],
+        mejorPara: "programacion",
+        puntuacion: 8.5,
+        tooltip: "Excelente para programación, matemáticas, ingeniería e investigación con alta eficiencia.",
+        sitio: "https://chat.deepseek.com",
+        historia: "DeepSeek es un proyecto de código abierto que busca democratizar la IA.",
+        capacidades: "Razonamiento, programación, análisis de datos, matemáticas."
+      },
+      {
+        id: 8,
+        nombre: "Qwen Chat",
+        empresa: "Alibaba",
+        pais: "China",
+        flag: "🇨🇳",
+        logo: "https://img.alicdn.com/tfs/TB1k1ZqMXXXXXcJXpXXXXXXXXXX-400-400.png",
+        descripcion: "Modelo de lenguaje de Alibaba con capacidades multimodales.",
+        modelos: "Qwen 3",
+        gratuito: true,
+        restriccion: "media",
+        tipos: ["programacion", "investigacion", "empresas"],
+        mejorPara: "programacion",
+        puntuacion: 8.2,
+        tooltip: "Ideal para programación, IA y automatización con integración en el ecosistema Alibaba.",
+        sitio: "https://chat.qwen.ai",
+        historia: "Qwen es la apuesta de Alibaba en el campo de la IA generativa.",
+        capacidades: "Razonamiento, programación, escritura, imágenes, audio."
+      },
+      {
+        id: 9,
+        nombre: "Kimi AI",
+        empresa: "Moonshot AI",
+        pais: "China",
+        flag: "🇨🇳",
+        logo: "https://kimi.moonshot.cn/favicon.ico",
+        descripcion: "Asistente chino con gran capacidad de contexto largo.",
+        modelos: "Kimi K3",
+        gratuito: true,
+        restriccion: "media",
+        tipos: ["investigacion", "educacion"],
+        mejorPara: "investigacion",
+        puntuacion: 8.0,
+        tooltip: "Conocido por manejar grandes volúmenes de documentos extensos para investigación.",
+        sitio: "https://kimi.com",
+        historia: "Kimi es conocido por manejar hasta 2 millones de tokens de contexto.",
+        capacidades: "Contexto largo, razonamiento, análisis de documentos."
+      },
+      {
+        id: 10,
+        nombre: "Mistral AI (Le Chat)",
+        empresa: "Mistral AI",
+        pais: "Francia",
+        flag: "🇫🇷",
+        logo: "https://mistral.ai/images/logo.svg",
+        descripcion: "Modelo de lenguaje open source con gran eficiencia y rendimiento.",
+        modelos: "Mistral Large",
+        gratuito: true,
+        restriccion: "media",
+        tipos: ["programacion", "investigacion", "data"],
+        mejorPara: "programacion",
+        puntuacion: 8.3,
+        tooltip: "Excelente para desarrollo de software y ciencia de datos con alto rendimiento.",
+        sitio: "https://chat.mistral.ai/chat",
+        historia: "Mistral AI es una startup europea que compite con OpenAI con modelos open source.",
+        capacidades: "Razonamiento, programación, escritura, análisis."
+      },
+      {
+        id: 11,
+        nombre: "Meta AI",
+        empresa: "Meta",
+        pais: "EE.UU.",
+        flag: "🇺🇸",
+        logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7b/Meta_Platforms_Inc._logo.svg/320px-Meta_Platforms_Inc._logo.svg.png",
+        descripcion: "Asistente de IA de Meta con capacidades multimodales.",
+        modelos: "Llama 4",
+        gratuito: true,
+        restriccion: "alta",
+        tipos: ["programacion", "investigacion", "educacion"],
+        mejorPara: "investigacion",
+        puntuacion: 8.4,
+        tooltip: "Ideal para conversación, generación de imágenes y programación con el ecosistema Meta.",
+        sitio: "https://meta.ai",
+        historia: "Meta ha desarrollado Llama para competir en el espacio de IA generativa.",
+        capacidades: "Conversación, imágenes, programación, razonamiento."
+      },
+      {
+        id: 12,
+        nombre: "Poe",
+        empresa: "Quora",
+        pais: "EE.UU.",
+        flag: "🇺🇸",
+        logo: "https://poe.com/favicon.ico",
+        descripcion: "Plataforma que agrega múltiples modelos de IA en un solo lugar.",
+        modelos: "Multimodelo",
+        gratuito: true,
+        restriccion: "alta",
+        tipos: ["investigacion", "educacion", "programacion"],
+        mejorPara: "investigacion",
+        puntuacion: 8.1,
+        tooltip: "Perfecto para comparar respuestas entre diferentes modelos de IA en tiempo real.",
+        sitio: "https://poe.com",
+        historia: "Poe es una plataforma que agrega múltiples modelos de IA para comparación.",
+        capacidades: "Comparación de modelos, acceso múltiple, versatilidad."
+      },
+      {
+        id: 13,
+        nombre: "HuggingChat",
+        empresa: "Hugging Face",
+        pais: "Global",
+        flag: "🌍",
+        logo: "https://huggingface.co/favicon.ico",
+        descripcion: "Plataforma open source de modelos de IA.",
+        modelos: "Llama, Qwen, Mistral",
+        gratuito: true,
+        restriccion: "baja",
+        tipos: ["programacion", "investigacion", "educacion"],
+        mejorPara: "investigacion",
+        puntuacion: 9.0,
+        tooltip: "La mejor opción para investigación técnica y programación con modelos open source.",
+        sitio: "https://huggingface.co/chat",
+        historia: "Hugging Face es el centro de la comunidad de IA open source.",
+        capacidades: "Modelos open source, colaboración, inferencia."
+      },
+      {
+        id: 14,
+        nombre: "Falcon Chat",
+        empresa: "TII",
+        pais: "EAU",
+        flag: "🇦🇪",
+        logo: "https://falconllm.tii.ae/favicon.ico",
+        descripcion: "Modelo de lenguaje open source de los Emiratos Árabes Unidos.",
+        modelos: "Falcon",
+        gratuito: true,
+        restriccion: "media",
+        tipos: ["programacion", "investigacion"],
+        mejorPara: "programacion",
+        puntuacion: 7.5,
+        tooltip: "Ideal para desarrollo e investigación con un modelo open source de alto rendimiento.",
+        sitio: "https://falconllm.tii.ae",
+        historia: "Falcon es el modelo open source líder de los Emiratos Árabes Unidos.",
+        capacidades: "Razonamiento, programación, análisis."
+      },
+      {
+        id: 16,
+        nombre: "Cohere Chat",
+        empresa: "Cohere",
+        pais: "Canadá",
+        flag: "🇨🇦",
+        logo: "https://cohere.com/favicon.ico",
+        descripcion: "Modelo de lenguaje enfocado en aplicaciones empresariales.",
+        modelos: "Command A",
+        gratuito: true,
+        restriccion: "alta",
+        tipos: ["empresas", "data", "marketing"],
+        mejorPara: "empresas",
+        puntuacion: 8.0,
+        tooltip: "Perfecto para empresas con necesidades de RAG, NLP y procesamiento de lenguaje.",
+        sitio: "https://coral.cohere.com",
+        historia: "Cohere es una empresa canadiense que ofrece modelos para empresas.",
+        capacidades: "Razonamiento, programación, análisis, generación de texto."
+      },
+      {
+        id: 17,
+        nombre: "Felo AI",
+        empresa: "Felo",
+        pais: "Japón",
+        flag: "🇯🇵",
+        logo: "https://felo.ai/favicon.ico",
+        descripcion: "Asistente de IA japonés con enfoque en investigación web.",
+        modelos: "Multimodelo",
+        gratuito: true,
+        restriccion: "media",
+        tipos: ["investigacion", "educacion"],
+        mejorPara: "investigacion",
+        puntuacion: 7.2,
+        tooltip: "Ideal para investigación web y búsqueda de información en japonés.",
+        sitio: "https://felo.ai",
+        historia: "Felo es un asistente de IA japonés con enfoque en investigación.",
+        capacidades: "Búsqueda web, investigación, análisis."
+      },
+      {
+        id: 18,
+        nombre: "Doubao",
+        empresa: "ByteDance",
+        pais: "China",
+        flag: "🇨🇳",
+        logo: "https://www.doubao.com/favicon.ico",
+        descripcion: "Asistente de IA de ByteDance para productividad.",
+        modelos: "Doubao",
+        gratuito: true,
+        restriccion: "media",
+        tipos: ["empresas", "educacion"],
+        mejorPara: "empresas",
+        puntuacion: 7.0,
+        tooltip: "Enfocado en productividad y asistencia empresarial en el ecosistema ByteDance.",
+        sitio: "https://www.doubao.com",
+        historia: "Doubao es el asistente de IA de ByteDance para productividad.",
+        capacidades: "Productividad, asistencia, análisis."
+      },
+      {
+        id: 19,
+        nombre: "ERNIE Bot",
+        empresa: "Baidu",
+        pais: "China",
+        flag: "🇨🇳",
+        logo: "https://www.baidu.com/img/PCtm_d9c8750bed0b3c7d089fa7d55720d6ae.png",
+        descripcion: "Modelo de lenguaje de Baidu integrado en sus servicios de búsqueda.",
+        modelos: "ERNIE",
+        gratuito: true,
+        restriccion: "alta",
+        tipos: ["investigacion", "educacion"],
+        mejorPara: "investigacion",
+        puntuacion: 7.6,
+        tooltip: "Modelo chino con fuerte integración en búsqueda y servicios para investigación.",
+        sitio: "https://yiyan.baidu.com",
+        historia: "Baidu ha desarrollado ERNIE para competir en el mercado chino de IA.",
+        capacidades: "Razonamiento, programación, escritura, búsqueda."
+      },
+      {
+        id: 20,
+        nombre: "Krutrim AI",
+        empresa: "Krutrim",
+        pais: "India",
+        flag: "🇮🇳",
+        logo: "https://www.krutrim.com/favicon.ico",
+        descripcion: "Asistente de IA indio con enfoque en productividad.",
+        modelos: "Krutrim",
+        gratuito: true,
+        restriccion: "alta",
+        tipos: ["empresas", "educacion"],
+        mejorPara: "empresas",
+        puntuacion: 6.8,
+        tooltip: "Ideal para productividad y asistencia empresarial en el mercado indio.",
+        sitio: "https://www.krutrim.com",
+        historia: "Krutrim es el primer asistente de IA desarrollado en India.",
+        capacidades: "Productividad, asistencia, análisis."
+      }
+    ];
+
+    // ======================== RANKINGS ========================
+    const rankings = {
+      'investigacion': ['ChatGPT', 'Claude', 'Gemini', 'Perplexity AI', 'DeepSeek'],
+      'programacion': ['Claude', 'DeepSeek', 'Grok', 'ChatGPT'],
+      'empresas': ['Cohere Chat', 'Microsoft Copilot', 'Doubao', 'Krutrim AI', 'Claude'],
+      'data': ['ChatGPT', 'DeepSeek', 'Gemini', 'Mistral AI (Le Chat)', 'Claude']
+    };
+
+    const emojisRanking = {
+      'investigacion': '🔬',
+      'programacion': '💻',
+      'empresas': '🏢',
+      'data': '📊'
+    };
+
+    function renderizarRankings() {
+      const container = document.getElementById('rankingsContainer');
+      container.innerHTML = '';
+      
+      Object.entries(rankings).forEach(([categoria, lista]) => {
+        const card = document.createElement('div');
+        card.className = 'ranking-card animate-in';
+        card.innerHTML = `
+          <h3 style="font-weight:700;color:var(--primary);margin-bottom:1rem;font-size:1.1rem;">
+            ${emojisRanking[categoria] || '🏆'} ${categoria.charAt(0).toUpperCase() + categoria.slice(1)}
+          </h3>
+          ${lista.map((nombre, index) => {
+            const medallas = ['🥇', '🥈', '🥉', '⭐', '⭐'];
+            const ia = ias.find(i => i.nombre === nombre);
+            return `
+              <div class="ranking-item">
+                <span class="medalla">${medallas[index] || '⭐'}</span>
+                <div style="flex:1;">
+                  <div style="font-weight:600;color:var(--primary);">${nombre}</div>
+                  ${ia ? `<div style="font-size:0.75rem;color:var(--text-light);">${ia.empresa}</div>` : ''}
+                </div>
+                ${ia ? `<span style="font-size:0.8rem;color:var(--secondary);font-weight:600;">${ia.puntuacion}/10</span>` : ''}
+              </div>
+            `;
+          }).join('')}
+        `;
+        container.appendChild(card);
+      });
+    }
+
+    // ======================== PAGINACIÓN ========================
+    let paginaActual = 1;
+    const itemsPorPagina = 10;
+    let datosFiltrados = [...ias];
+
+    function renderizarPaginacion(totalItems) {
+      const totalPaginas = Math.ceil(totalItems / itemsPorPagina);
+      const inicio = (paginaActual - 1) * itemsPorPagina;
+      const fin = Math.min(inicio + itemsPorPagina, totalItems);
+
+      document.getElementById('inicioRango').textContent = totalItems > 0 ? inicio + 1 : 0;
+      document.getElementById('finRango').textContent = fin;
+      document.getElementById('totalItems').textContent = totalItems;
+
+      const controles = document.getElementById('paginacionControles');
+      controles.innerHTML = '';
+
+      const btnAnterior = document.createElement('button');
+      btnAnterior.className = 'paginacion-btn arrow';
+      btnAnterior.innerHTML = '<i class="fas fa-chevron-left"></i>';
+      btnAnterior.disabled = paginaActual === 1 || totalItems === 0;
+      btnAnterior.onclick = () => {
+        if (paginaActual > 1) {
+          paginaActual--;
+          actualizarVista();
+        }
+      };
+      controles.appendChild(btnAnterior);
+
+      const maxPaginasMostrar = 5;
+      let inicioPaginas = Math.max(1, paginaActual - Math.floor(maxPaginasMostrar / 2));
+      let finPaginas = Math.min(totalPaginas, inicioPaginas + maxPaginasMostrar - 1);
+      if (finPaginas - inicioPaginas + 1 < maxPaginasMostrar) {
+        inicioPaginas = Math.max(1, finPaginas - maxPaginasMostrar + 1);
+      }
+
+      if (inicioPaginas > 1) {
+        const btnPrimero = document.createElement('button');
+        btnPrimero.className = 'paginacion-btn';
+        btnPrimero.textContent = '1';
+        btnPrimero.onclick = () => { paginaActual = 1; actualizarVista(); };
+        controles.appendChild(btnPrimero);
+        if (inicioPaginas > 2) {
+          const puntos = document.createElement('span');
+          puntos.className = 'paginacion-btn';
+          puntos.textContent = '…';
+          puntos.style.cursor = 'default';
+          puntos.style.background = 'transparent';
+          puntos.style.border = 'none';
+          controles.appendChild(puntos);
+        }
+      }
+
+      for (let i = inicioPaginas; i <= finPaginas; i++) {
+        const btn = document.createElement('button');
+        btn.className = `paginacion-btn ${i === paginaActual ? 'active' : ''}`;
+        btn.textContent = i;
+        btn.onclick = () => { paginaActual = i; actualizarVista(); };
+        controles.appendChild(btn);
+      }
+
+      if (finPaginas < totalPaginas) {
+        if (finPaginas < totalPaginas - 1) {
+          const puntos = document.createElement('span');
+          puntos.className = 'paginacion-btn';
+          puntos.textContent = '…';
+          puntos.style.cursor = 'default';
+          puntos.style.background = 'transparent';
+          puntos.style.border = 'none';
+          controles.appendChild(puntos);
+        }
+        const btnUltimo = document.createElement('button');
+        btnUltimo.className = 'paginacion-btn';
+        btnUltimo.textContent = totalPaginas;
+        btnUltimo.onclick = () => { paginaActual = totalPaginas; actualizarVista(); };
+        controles.appendChild(btnUltimo);
+      }
+
+      const btnSiguiente = document.createElement('button');
+      btnSiguiente.className = 'paginacion-btn arrow';
+      btnSiguiente.innerHTML = '<i class="fas fa-chevron-right"></i>';
+      btnSiguiente.disabled = paginaActual === totalPaginas || totalItems === 0;
+      btnSiguiente.onclick = () => {
+        if (paginaActual < totalPaginas) {
+          paginaActual++;
+          actualizarVista();
+        }
+      };
+      controles.appendChild(btnSiguiente);
+
+      document.getElementById('paginacionContainer').style.display = totalItems > 0 ? 'flex' : 'none';
+    }
+
+    function actualizarVista() {
+      const inicio = (paginaActual - 1) * itemsPorPagina;
+      const fin = inicio + itemsPorPagina;
+      const datosPagina = datosFiltrados.slice(inicio, fin);
+      renderizarTarjetas(datosPagina);
+      renderizarPaginacion(datosFiltrados.length);
+      document.getElementById('catalogo').scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+
+    // ======================== LÓGICA PRINCIPAL ========================
+    const grid = document.getElementById('gridIA');
+    const buscador = document.getElementById('buscador');
+    const filtroPais = document.getElementById('filtroPais');
+    const filtroTipo = document.getElementById('filtroTipo');
+    const sinResultados = document.getElementById('sinResultados');
+    const resultadosCount = document.getElementById('resultadosCount');
+
+    const paises = [...new Set(ias.map(ia => ia.pais))].sort();
+    paises.forEach(p => {
+      const option = document.createElement('option');
+      option.value = p;
+      option.textContent = p;
+      filtroPais.appendChild(option);
+    });
+
+    document.getElementById('totalIA').textContent = ias.length;
+    document.getElementById('totalPaises').textContent = paises.length;
+    document.getElementById('totalGratuitas').textContent = ias.filter(ia => ia.gratuito).length;
+    document.getElementById('totalOpenSource').textContent = ias.filter(ia => ia.restriccion === 'baja').length;
+
+    function renderizarTarjetas(iasFiltradas) {
+      grid.innerHTML = '';
+      if (iasFiltradas.length === 0) {
+        sinResultados.classList.remove('hidden');
+        resultadosCount.textContent = '0 resultados';
+        return;
+      }
+      sinResultados.classList.add('hidden');
+      resultadosCount.textContent = `${datosFiltrados.length} resultados`;
+
+      iasFiltradas.forEach((ia, index) => {
+        const card = document.createElement('div');
+        card.className = `ia-card animate-in delay-${(index % 5) + 1}`;
+        
+        const statusBadge = `<span class="status-badge gratis"><i class="fas fa-check-circle"></i> Gratis</span>`;
+        const precioDisplay = 'Gratis';
+
+        const restriccionMap = {
+          'baja': '🟢 Baja',
+          'media': '🟡 Media',
+          'alta': '🟠 Alta',
+          'muyAlta': '🔴 Muy Alta'
+        };
+
+        card.innerHTML = `
+          <div class="card-header">
+            <div class="logo-wrapper">
+              <img src="${ia.logo}" alt="${ia.nombre}" class="logo" onerror="this.src='https://placehold.co/200x200?text=AI'">
+              <span class="flag-badge">${ia.flag}</span>
+            </div>
+            <div class="card-title">
+              <div class="rank-badge">#${ias.indexOf(ia) + 1}</div>
+              <div class="name">${ia.nombre}</div>
+              <div class="company">
+                <i class="fas fa-building"></i> ${ia.empresa}
+              </div>
+            </div>
+          </div>
+          <div class="card-body">
+            <p class="desc">${ia.descripcion}</p>
+            <div class="tags">
+              ${ia.tipos.map(t => `<span class="tag">${t}</span>`).join('')}
+            </div>
+            <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.5rem;">
+              <div style="display: flex; gap: 0.5rem; align-items: center; flex-wrap: wrap;">
+                ${statusBadge}
+                <span class="price-tag">${precioDisplay}</span>
+                <span class="ethical-badge ${ia.restriccion}">${restriccionMap[ia.restriccion] || '🟡 Media'}</span>
+              </div>
+              <span style="font-size:0.8rem;font-weight:600;color:var(--secondary);">
+                ⭐ ${ia.puntuacion}/10
+              </span>
+            </div>
+            <div style="margin-top: 0.5rem; font-size: 0.75rem; color: var(--text-light);">
+              <strong>Modelos:</strong> ${ia.modelos}
+            </div>
+          </div>
+          <div class="card-footer">
+            <span class="badge-mejor">
+              <i class="fas fa-star"></i> Mejor para: ${ia.mejorPara}
+              <span class="tooltip">${ia.tooltip}</span>
+            </span>
+            <button class="btn-ver" onclick="abrirModal(${ia.id})">
+              Ver detalles <i class="fas fa-arrow-right"></i>
+            </button>
+          </div>
+        `;
+        grid.appendChild(card);
+      });
+    }
+
+    function aplicarFiltros() {
+      const texto = buscador.value.toLowerCase().trim();
+      const pais = filtroPais.value;
+      const tipo = filtroTipo.value;
+      const puntuacionMin = parseFloat(document.getElementById('filtroPuntuacion').value) || 0;
+      const precioMax = parseInt(document.getElementById('filtroPrecio').value) || Infinity;
+      const modelo = document.getElementById('filtroModelo').value;
+
+      datosFiltrados = ias.filter(ia => {
+        if (texto) {
+          const match = ia.nombre.toLowerCase().includes(texto) ||
+                        ia.empresa.toLowerCase().includes(texto) ||
+                        ia.pais.toLowerCase().includes(texto) ||
+                        ia.descripcion.toLowerCase().includes(texto);
+          if (!match) return false;
+        }
+        if (pais && ia.pais !== pais) return false;
+        if (tipo && !ia.tipos.includes(tipo)) return false;
+        if (ia.puntuacion < puntuacionMin) return false;
+        if (ia.precio && ia.precio > precioMax) return false;
+        if (modelo && !ia.modelos.includes(modelo)) return false;
+        return true;
+      });
+
+      paginaActual = 1;
+      actualizarVista();
+    }
+
+    buscador.addEventListener('input', aplicarFiltros);
+    filtroPais.addEventListener('change', aplicarFiltros);
+    filtroTipo.addEventListener('change', aplicarFiltros);
+
+    const modal = document.getElementById('modal');
+    const modalBody = document.getElementById('modalBody');
+
+    function abrirModal(id) {
+      const ia = ias.find(i => i.id === id);
+      if (!ia) return;
+      const restriccionMap = {
+        'baja': '🟢 Baja',
+        'media': '🟡 Media',
+        'alta': '🟠 Alta',
+        'muyAlta': '🔴 Muy Alta'
+      };
+      modalBody.innerHTML = `
+        <div class="flex items-start gap-4 mb-6">
+          <img src="${ia.logo}" alt="${ia.nombre}" class="w-16 h-16 object-contain rounded-lg bg-gray-50 dark:bg-gray-800 p-1" onerror="this.src='https://placehold.co/200x200?text=AI'">
+          <div>
+            <h2>${ia.nombre}</h2>
+            <p class="meta">${ia.empresa} · <span class="flag">${ia.flag}</span> ${ia.pais}</p>
+            <div class="flex flex-wrap gap-2 mt-2">
+              ${ia.tipos.map(t => `<span class="tag">${t}</span>`).join('')}
+              <span class="badge-mejor" style="display:inline-flex;align-items:center;gap:0.3rem;padding:0.2rem 0.8rem;border-radius:100px;font-size:0.75rem;font-weight:600;background:rgba(201,168,76,0.15);color:var(--secondary);">
+                <i class="fas fa-star"></i> ${ia.mejorPara}
+              </span>
+              <span style="display:inline-flex;align-items:center;gap:0.3rem;padding:0.2rem 0.8rem;border-radius:100px;font-size:0.75rem;font-weight:600;background:rgba(59,130,246,0.1);color:#3b82f6;">
+                ⭐ ${ia.puntuacion}/10
+              </span>
+              <span class="ethical-badge ${ia.restriccion}" style="padding:0.2rem 0.8rem;border-radius:100px;font-size:0.75rem;font-weight:600;">
+                ${restriccionMap[ia.restriccion]}
+              </span>
+            </div>
+          </div>
+        </div>
+        <div class="space-y-3">
+          <div class="detail-row">
+            <span class="detail-label">Descripción</span>
+            <span class="detail-value">${ia.descripcion}</span>
+          </div>
+          <div class="detail-row">
+            <span class="detail-label">Modelos</span>
+            <span class="detail-value">${ia.modelos}</span>
+          </div>
+          <div class="detail-row">
+            <span class="detail-label">Gratuito</span>
+            <span class="detail-value">${ia.gratuito ? '✅ Sí' : '❌ No'}</span>
+          </div>
+          <div class="detail-row">
+            <span class="detail-label">Historia</span>
+            <span class="detail-value">${ia.historia}</span>
+          </div>
+          <div class="detail-row">
+            <span class="detail-label">Capacidades</span>
+            <span class="detail-value">${ia.capacidades}</span>
+          </div>
+          <div class="detail-row">
+            <span class="detail-label">Por qué es ideal</span>
+            <span class="detail-value">${ia.tooltip}</span>
+          </div>
+        </div>
+        <div class="mt-6 flex gap-3">
+          <button onclick="cerrarModal()" class="px-6 py-2 rounded-full text-sm font-medium border border-gray-300 dark:border-gray-600 hover:bg-gray-100 dark:hover:bg-gray-700 transition">
+            Cerrar
+          </button>
+          <a href="${ia.sitio}" target="_blank" class="btn-visitar">
+            <i class="fas fa-external-link-alt mr-2"></i> Visitar sitio
+          </a>
+        </div>
+      `;
+      modal.classList.add('active');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function cerrarModal() {
+      modal.classList.remove('active');
+      document.body.style.overflow = '';
+    }
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') cerrarModal();
+    });
+
+    const btnOscuro = document.getElementById('modoOscuro');
+    let oscuro = false;
+    btnOscuro.addEventListener('click', () => {
+      oscuro = !oscuro;
+      document.documentElement.classList.toggle('dark');
+      btnOscuro.innerHTML = oscuro ? '<i class="fas fa-sun"></i>' : '<i class="fas fa-moon"></i>';
+    });
+
+    renderizarRankings();
+    datosFiltrados = [...ias];
+    actualizarVista();
+
+    // ================================================================
+    // NUEVA SECCIÓN: CATÁLOGO DE RECURSOS DE INTELIGENCIA ARTIFICIAL
+    // ================================================================
+
+    // Datos de recursos (simulando carga desde JSON)
+    const recursosData = [
+      {
+        id: 1,
+        categoria: "Investigación Inteligente",
+        recurso: "NotebookLM (Google)",
+        definicion: "Asistente de investigación que analiza documentos proporcionados por el usuario y responde únicamente con base en ellos.",
+        paraQueSirve: "Resumir documentos, generar preguntas, elaborar informes, crear guías de estudio y podcasts automáticos.",
+        tipoIA: "LLM + RAG",
+        modeloIA: "Gemini",
+        agentesIA: "Sí",
+        entrada: "PDF, Word, Google Docs, sitios web, videos de YouTube, texto",
+        salida: "Resúmenes, preguntas, cronologías, audio, mapas conceptuales",
+        versionGratuita: "Sí",
+        casosUso: "Investigación, auditoría, consultoría, educación, análisis documental"
+      },
+      {
+        id: 2,
+        categoria: "Generación de Imágenes",
+        recurso: "Midjourney",
+        definicion: "Plataforma especializada en generar imágenes hiperrealistas mediante instrucciones en lenguaje natural.",
+        paraQueSirve: "Crear ilustraciones, fotografías, publicidad, branding y arte conceptual.",
+        tipoIA: "IA Generativa",
+        modeloIA: "Modelo propietario",
+        agentesIA: "No",
+        entrada: "Texto",
+        salida: "Imagen",
+        versionGratuita: "No (requiere suscripción)",
+        casosUso: "Marketing, publicidad, diseño gráfico"
+      },
+      {
+        id: 3,
+        categoria: "Generación de Imágenes",
+        recurso: "Leonardo AI",
+        definicion: "Plataforma de diseño asistido por IA con múltiples modelos y estilos visuales.",
+        paraQueSirve: "Crear imágenes, personajes, iconografía, interfaces, activos para videojuegos y diseño conceptual.",
+        tipoIA: "IA Generativa",
+        modeloIA: "Leonardo Phoenix, FLUX, SDXL y otros",
+        agentesIA: "Sí (Workflows)",
+        entrada: "Texto e imágenes",
+        salida: "Imagen",
+        versionGratuita: "Sí",
+        casosUso: "Diseño gráfico, videojuegos, UI/UX"
+      },
+      {
+        id: 4,
+        categoria: "Generación de Voz",
+        recurso: "ElevenLabs",
+        definicion: "Plataforma especializada en síntesis de voz con calidad casi humana.",
+        paraQueSirve: "Narraciones, doblaje, asistentes virtuales y clonación de voz.",
+        tipoIA: "IA Generativa de Audio",
+        modeloIA: "Modelo propietario",
+        agentesIA: "Sí",
+        entrada: "Texto o audio",
+        salida: "Voz",
+        versionGratuita: "Sí",
+        casosUso: "Audiolibros, videos, atención al cliente"
+      },
+      {
+        id: 5,
+        categoria: "Generación Musical",
+        recurso: "Suno AI",
+        definicion: "Plataforma que crea canciones completas mediante instrucciones escritas.",
+        paraQueSirve: "Componer música con letra, voz e instrumentos automáticamente.",
+        tipoIA: "IA Generativa Musical",
+        modeloIA: "Modelo propietario",
+        agentesIA: "No",
+        entrada: "Texto",
+        salida: "Música",
+        versionGratuita: "Sí",
+        casosUso: "Publicidad, redes sociales, entretenimiento"
+      },
+      {
+        id: 6,
+        categoria: "Análisis de Documentos",
+        recurso: "ChatPDF",
+        definicion: "Asistente conversacional especializado en documentos PDF.",
+        paraQueSirve: "Consultar documentos sin leerlos completamente, obtener resúmenes y respuestas específicas.",
+        tipoIA: "LLM + RAG",
+        modeloIA: "GPT (según versión)",
+        agentesIA: "No",
+        entrada: "PDF",
+        salida: "Respuestas, resúmenes",
+        versionGratuita: "Sí",
+        casosUso: "Contratos, manuales, investigaciones"
+      },
+      {
+        id: 7,
+        categoria: "Desarrollo de Software",
+        recurso: "Lovable",
+        definicion: "Plataforma que crea aplicaciones web completas a partir de instrucciones en lenguaje natural.",
+        paraQueSirve: "Desarrollar aplicaciones Full Stack sin necesidad de programar manualmente.",
+        tipoIA: "IA para Desarrollo (Vibe Coding)",
+        modeloIA: "GPT + Claude (según configuración)",
+        agentesIA: "Sí",
+        entrada: "Texto",
+        salida: "Código y aplicación funcional",
+        versionGratuita: "Sí",
+        casosUso: "MVP, startups, sistemas empresariales, prototipos"
+      }
+    ];
+
+    // Variables globales para recursos
+    let recursosFiltrados = [...recursosData];
+
+    // Inicializar selects de recursos
+    function inicializarFiltrosRecursos() {
+      const categorias = [...new Set(recursosData.map(r => r.categoria))].sort();
+      const tiposIA = [...new Set(recursosData.map(r => r.tipoIA))].sort();
+      const modelosIA = [...new Set(recursosData.map(r => r.modeloIA))].sort();
+
+      const catSelect = document.getElementById('recursosFiltroCategoria');
+      const tipoSelect = document.getElementById('recursosFiltroTipoIA');
+      const modeloSelect = document.getElementById('recursosFiltroModelo');
+
+      categorias.forEach(c => {
+        const opt = document.createElement('option');
+        opt.value = c;
+        opt.textContent = c;
+        catSelect.appendChild(opt);
+      });
+
+      tiposIA.forEach(t => {
+        const opt = document.createElement('option');
+        opt.value = t;
+        opt.textContent = t;
+        tipoSelect.appendChild(opt);
+      });
+
+      modelosIA.forEach(m => {
+        const opt = document.createElement('option');
+        opt.value = m;
+        opt.textContent = m;
+        modeloSelect.appendChild(opt);
+      });
+    }
+
+    function renderizarRecursos(data) {
+      const grid = document.getElementById('gridRecursos');
+      const sinResultados = document.getElementById('sinResultadosRecursos');
+      
+      grid.innerHTML = '';
+      if (data.length === 0) {
+        sinResultados.classList.remove('hidden');
+        return;
+      }
+      sinResultados.classList.add('hidden');
+
+      data.forEach((recurso, index) => {
+        const card = document.createElement('div');
+        card.className = `recurso-card animate-in delay-${(index % 5) + 1}`;
+        const agentesTag = recurso.agentesIA === 'Sí' ? 'agente-si' : 'agente-no';
+        const gratisTag = recurso.versionGratuita === 'Sí' ? 'gratis-si' : 'gratis-no';
+        
+        card.innerHTML = `
+          <div class="recurso-header">
+            <div class="recurso-icon">
+              <i class="fas fa-cube"></i>
+            </div>
+            <div>
+              <div class="recurso-nombre">${recurso.recurso}</div>
+              <span class="recurso-categoria">${recurso.categoria}</span>
+            </div>
+          </div>
+          <div class="recurso-definicion">${recurso.definicion}</div>
+          <div class="recurso-tags">
+            <span class="recurso-tag">${recurso.tipoIA}</span>
+            <span class="recurso-tag ${agentesTag}">🤖 ${recurso.agentesIA}</span>
+            <span class="recurso-tag ${gratisTag}">${recurso.versionGratuita === 'Sí' ? '💰 Gratis' : '💎 Premium'}</span>
+          </div>
+          <div style="font-size:0.8rem;color:var(--text-light);margin-bottom:0.5rem;">
+            <strong>Modelo:</strong> ${recurso.modeloIA}
+          </div>
+          <div class="recurso-footer">
+            <button class="btn-ver-recurso" onclick="abrirModalRecurso(${recurso.id})">
+              Ver detalles <i class="fas fa-arrow-right"></i>
+            </button>
+          </div>
+        `;
+        grid.appendChild(card);
+      });
+    }
+
+    function filtrarRecursos() {
+      const texto = document.getElementById('recursosBuscador').value.toLowerCase().trim();
+      const categoria = document.getElementById('recursosFiltroCategoria').value;
+      const tipoIA = document.getElementById('recursosFiltroTipoIA').value;
+      const modelo = document.getElementById('recursosFiltroModelo').value;
+      const agentes = document.getElementById('recursosFiltroAgentes').value;
+      const gratis = document.getElementById('recursosFiltroGratis').value;
+
+      recursosFiltrados = recursosData.filter(r => {
+        if (texto && !r.recurso.toLowerCase().includes(texto) && !r.definicion.toLowerCase().includes(texto)) return false;
+        if (categoria && r.categoria !== categoria) return false;
+        if (tipoIA && r.tipoIA !== tipoIA) return false;
+        if (modelo && r.modeloIA !== modelo) return false;
+        if (agentes === 'si' && r.agentesIA !== 'Sí') return false;
+        if (agentes === 'no' && r.agentesIA !== 'No') return false;
+        if (gratis === 'si' && r.versionGratuita !== 'Sí') return false;
+        if (gratis === 'no' && r.versionGratuita !== 'No') return false;
+        return true;
+      });
+
+      renderizarRecursos(recursosFiltrados);
+    }
+
+    // Modal de recursos
+    const modalRecurso = document.getElementById('modalRecurso');
+    const modalRecursoBody = document.getElementById('modalRecursoBody');
+
+    function abrirModalRecurso(id) {
+      const recurso = recursosData.find(r => r.id === id);
+      if (!recurso) return;
+
+      modalRecursoBody.innerHTML = `
+        <div style="margin-bottom:1.5rem;">
+          <div style="display:flex;align-items:center;gap:1rem;margin-bottom:0.5rem;">
+            <div style="width:48px;height:48px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:1.5rem;background:linear-gradient(135deg,rgba(201,168,76,0.15),rgba(74,124,158,0.1));">
+              <i class="fas fa-cube"></i>
+            </div>
+            <div>
+              <h2 style="font-size:1.5rem;">${recurso.recurso}</h2>
+              <p class="meta">${recurso.categoria}</p>
+            </div>
+          </div>
+          <span class="recurso-categoria" style="background:var(--bg-subtle);padding:0.25rem 0.8rem;border-radius:100px;font-size:0.75rem;display:inline-block;">${recurso.tipoIA}</span>
+        </div>
+        <div class="space-y-3">
+          <div class="detail-row">
+            <span class="detail-label">Definición</span>
+            <span class="detail-value">${recurso.definicion}</span>
+          </div>
+          <div class="detail-row">
+            <span class="detail-label">¿Para qué sirve?</span>
+            <span class="detail-value">${recurso.paraQueSirve}</span>
+          </div>
+          <div class="detail-row">
+            <span class="detail-label">Tipo de IA</span>
+            <span class="detail-value">${recurso.tipoIA}</span>
+          </div>
+          <div class="detail-row">
+            <span class="detail-label">Modelo de IA</span>
+            <span class="detail-value">${recurso.modeloIA}</span>
+          </div>
+          <div class="detail-row">
+            <span class="detail-label">Agentes IA</span>
+            <span class="detail-value">${recurso.agentesIA}</span>
+          </div>
+          <div class="detail-row">
+            <span class="detail-label">Entrada</span>
+            <span class="detail-value">${recurso.entrada}</span>
+          </div>
+          <div class="detail-row">
+            <span class="detail-label">Salida</span>
+            <span class="detail-value">${recurso.salida}</span>
+          </div>
+          <div class="detail-row">
+            <span class="detail-label">Versión gratuita</span>
+            <span class="detail-value">${recurso.versionGratuita}</span>
+          </div>
+          <div class="detail-row">
+            <span class="detail-label">Casos de uso</span>
+            <span class="detail-value">${recurso.casosUso}</span>
+          </div>
+        </div>
+        <div class="mt-6">
+          <button onclick="cerrarModalRecurso()" class="px-6 py-2 rounded-full text-sm font-medium border border-gray-300 dark:border-gray-600 hover:bg-gray-100 dark:hover:bg-gray-700 transition">
+            Cerrar
+          </button>
+        </div>
+      `;
+      modalRecurso.classList.add('active');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function cerrarModalRecurso() {
+      modalRecurso.classList.remove('active');
+      document.body.style.overflow = '';
+    }
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        cerrarModalRecurso();
+        cerrarModal();
+      }
+    });
+
+    // Event listeners para recursos
+    document.addEventListener('DOMContentLoaded', () => {
+      inicializarFiltrosRecursos();
+      renderizarRecursos(recursosData);
+
+      document.getElementById('recursosBuscador').addEventListener('input', filtrarRecursos);
+      document.getElementById('recursosFiltroCategoria').addEventListener('change', filtrarRecursos);
+      document.getElementById('recursosFiltroTipoIA').addEventListener('change', filtrarRecursos);
+      document.getElementById('recursosFiltroModelo').addEventListener('change', filtrarRecursos);
+      document.getElementById('recursosFiltroAgentes').addEventListener('change', filtrarRecursos);
+      document.getElementById('recursosFiltroGratis').addEventListener('change', filtrarRecursos);
+      document.getElementById('recursosLimpiarFiltros').addEventListener('click', () => {
+        document.getElementById('recursosBuscador').value = '';
+        document.getElementById('recursosFiltroCategoria').value = '';
+        document.getElementById('recursosFiltroTipoIA').value = '';
+        document.getElementById('recursosFiltroModelo').value = '';
+        document.getElementById('recursosFiltroAgentes').value = '';
+        document.getElementById('recursosFiltroGratis').value = '';
+        filtrarRecursos();
+      });
+    });
+  </script>
+  <!-- ===== MEJORAS VISUALES (no modifica datos, filtros, paginación, modal ni modo oscuro) ===== -->
+  <script>
+    // ---- Barra de progreso de scroll ----
+    const scrollProgress = document.getElementById('scrollProgress');
+    const navbarEl = document.getElementById('navbar');
+    function onScrollUpdate() {
+      const h = document.documentElement;
+      const scrolled = (h.scrollTop) / (h.scrollHeight - h.clientHeight) * 100;
+      if (scrollProgress) scrollProgress.style.width = scrolled + '%';
+      if (navbarEl) navbarEl.classList.toggle('scrolled', h.scrollTop > 10);
+    }
+    document.addEventListener('scroll', onScrollUpdate, { passive: true });
+    onScrollUpdate();
+
+    // ---- Scroll-spy: resalta el enlace de navegación activo ----
+    const navLinks = document.querySelectorAll('.nav-link');
+    const spySections = Array.from(navLinks)
+      .map(a => document.querySelector(a.getAttribute('href')))
+      .filter(Boolean);
+    const spyObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const id = '#' + entry.target.id;
+          navLinks.forEach(a => a.classList.toggle('active', a.getAttribute('href') === id));
+        }
+      });
+    }, { rootMargin: '-40% 0px -50% 0px', threshold: 0 });
+    spySections.forEach(s => spyObserver.observe(s));
+
+    // ---- Scroll reveal genérico ----
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('in-view');
+          revealObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12 });
+    document.querySelectorAll('.reveal, .reveal-scale').forEach(el => revealObserver.observe(el));
+
+    // ---- Efecto ripple en botones ----
+    document.addEventListener('click', (e) => {
+      const btn = e.target.closest('.ripple-el, .btn-filtrar, .btn-search, .paginacion-btn, .btn-ver, .btn-visitar, .btn-ver-recurso, .recursos-filtro-limpiar');
+      if (!btn) return;
+      const rect = btn.getBoundingClientRect();
+      const circle = document.createElement('span');
+      const size = Math.max(rect.width, rect.height);
+      circle.className = 'ripple-circle';
+      circle.style.width = circle.style.height = size + 'px';
+      circle.style.left = (e.clientX - rect.left - size / 2) + 'px';
+      circle.style.top = (e.clientY - rect.top - size / 2) + 'px';
+      const prevPosition = getComputedStyle(btn).position;
+      if (prevPosition === 'static') btn.style.position = 'relative';
+      btn.style.overflow = btn.style.overflow || 'hidden';
+      btn.appendChild(circle);
+      setTimeout(() => circle.remove(), 650);
+    });
+
+    // ---- Botón magnético (Explorar) ----
+    const magneticBtn = document.querySelector('.magnetic');
+    if (magneticBtn) {
+      magneticBtn.addEventListener('mousemove', (e) => {
+        const rect = magneticBtn.getBoundingClientRect();
+        const x = e.clientX - rect.left - rect.width / 2;
+        const y = e.clientY - rect.top - rect.height / 2;
+        magneticBtn.style.transform = `translate(${x * 0.25}px, ${y * 0.4}px)`;
+      });
+      magneticBtn.addEventListener('mouseleave', () => {
+        magneticBtn.style.transform = 'translate(0, 0)';
+      });
+    }
+
+    // ---- Iluminación dinámica en hover de tarjetas (glow que sigue el cursor) ----
+    document.addEventListener('mousemove', (e) => {
+      const card = e.target.closest('.ia-card, .recurso-card');
+      if (!card) return;
+      const rect = card.getBoundingClientRect();
+      card.style.setProperty('--mx', ((e.clientX - rect.left) / rect.width * 100) + '%');
+      card.style.setProperty('--my', ((e.clientY - rect.top) / rect.height * 100) + '%');
+    });
+
+    // ---- Red de nodos animada en el Hero (firma visual: malla global de IA) ----
+    (function heroNetwork() {
+      const canvas = document.getElementById('heroCanvas');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+      let w, h, nodes;
+      const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+      function resize() {
+        w = canvas.width = canvas.offsetWidth * devicePixelRatio;
+        h = canvas.height = canvas.offsetHeight * devicePixelRatio;
+      }
+      function initNodes() {
+        const count = Math.min(60, Math.floor((canvas.offsetWidth * canvas.offsetHeight) / 22000));
+        nodes = Array.from({ length: count }, () => ({
+          x: Math.random() * w,
+          y: Math.random() * h,
+          vx: (Math.random() - 0.5) * 0.25 * devicePixelRatio,
+          vy: (Math.random() - 0.5) * 0.25 * devicePixelRatio,
+          r: (Math.random() * 1.4 + 0.6) * devicePixelRatio
+        }));
+      }
+      function step() {
+        ctx.clearRect(0, 0, w, h);
+        const maxDist = 150 * devicePixelRatio;
+        for (let i = 0; i < nodes.length; i++) {
+          const n = nodes[i];
+          n.x += n.vx; n.y += n.vy;
+          if (n.x < 0 || n.x > w) n.vx *= -1;
+          if (n.y < 0 || n.y > h) n.vy *= -1;
+          for (let j = i + 1; j < nodes.length; j++) {
+            const m = nodes[j];
+            const dx = n.x - m.x, dy = n.y - m.y;
+            const dist = Math.sqrt(dx * dx + dy * dy);
+            if (dist < maxDist) {
+              ctx.strokeStyle = `rgba(201, 168, 76, ${0.18 * (1 - dist / maxDist)})`;
+              ctx.lineWidth = 1;
+              ctx.beginPath();
+              ctx.moveTo(n.x, n.y);
+              ctx.lineTo(m.x, m.y);
+              ctx.stroke();
+            }
+          }
+        }
+        for (const n of nodes) {
+          ctx.beginPath();
+          ctx.arc(n.x, n.y, n.r, 0, Math.PI * 2);
+          ctx.fillStyle = 'rgba(232, 213, 163, 0.65)';
+          ctx.fill();
+        }
+        if (!prefersReducedMotion) requestAnimationFrame(step);
+      }
+      resize();
+      initNodes();
+      step();
+      window.addEventListener('resize', () => { resize(); initNodes(); });
+    })();
+
+    // ---- Filtros propios de la sección Catálogo (texto, funcionalidad, categoría, precio) ----
+    // Reutilizan la lógica original de aplicarFiltros(): sincronizan sus valores con los
+    // controles del Hero (buscador, filtroTipo, filtroPais, filtroPrecio) y disparan los
+    // mismos eventos que ya escucha el script principal. No se duplica ningún ID ni se
+    // reescribe la función aplicarFiltros().
+    (function catalogoFiltros() {
+      const catBuscador = document.getElementById('catBuscador');
+      const catFiltroTipo = document.getElementById('catFiltroTipo');
+      const catFiltroCategoria = document.getElementById('catFiltroCategoria');
+      const catFiltroPrecio = document.getElementById('catFiltroPrecio');
+      const catLimpiar = document.getElementById('catLimpiarFiltros');
+      const heroBuscador = document.getElementById('buscador');
+      const heroFiltroTipo = document.getElementById('filtroTipo');
+      const heroFiltroPais = document.getElementById('filtroPais');
+      const heroFiltroPrecio = document.getElementById('filtroPrecio');
+      const heroFiltroPuntuacion = document.getElementById('filtroPuntuacion');
+      const heroFiltroModelo = document.getElementById('filtroModelo');
+      if (!catBuscador || !heroBuscador) return;
+
+      // Clona las opciones de país generadas dinámicamente por el script original
+      // (se ejecuta después de que ese bloque ya haya poblado filtroPais).
+      function sincronizarPaises() {
+        if (!catFiltroCategoria) return;
+        const actual = catFiltroCategoria.value;
+        catFiltroCategoria.innerHTML = heroFiltroPais.innerHTML;
+        catFiltroCategoria.value = actual;
+      }
+      sincronizarPaises();
+
+      // Catálogo → Hero (dispara los listeners ya existentes en el script original)
+      catBuscador.addEventListener('input', () => {
+        heroBuscador.value = catBuscador.value;
+        heroBuscador.dispatchEvent(new Event('input'));
+      });
+      catFiltroTipo.addEventListener('change', () => {
+        heroFiltroTipo.value = catFiltroTipo.value;
+        heroFiltroTipo.dispatchEvent(new Event('change'));
+      });
+      catFiltroCategoria.addEventListener('change', () => {
+        heroFiltroPais.value = catFiltroCategoria.value;
+        heroFiltroPais.dispatchEvent(new Event('change'));
+      });
+      catFiltroPrecio.addEventListener('input', () => {
+        heroFiltroPrecio.value = catFiltroPrecio.value;
+        if (typeof aplicarFiltros === 'function') aplicarFiltros();
+      });
+
+      // Hero → Catálogo (mantiene ambos paneles sincronizados visualmente)
+      heroBuscador.addEventListener('input', () => { catBuscador.value = heroBuscador.value; });
+      heroFiltroTipo.addEventListener('change', () => { catFiltroTipo.value = heroFiltroTipo.value; });
+      heroFiltroPais.addEventListener('change', () => {
+        sincronizarPaises();
+        catFiltroCategoria.value = heroFiltroPais.value;
+      });
+
+      // Limpiar filtros (catálogo + hero) y volver a aplicar
+      if (catLimpiar) {
+        catLimpiar.addEventListener('click', () => {
+          catBuscador.value = '';
+          catFiltroTipo.value = '';
+          catFiltroCategoria.value = '';
+          catFiltroPrecio.value = '';
+          heroBuscador.value = '';
+          heroFiltroTipo.value = '';
+          heroFiltroPais.value = '';
+          heroFiltroPrecio.value = '';
+          if (heroFiltroPuntuacion) {
+            heroFiltroPuntuacion.value = 0;
+            const label = document.getElementById('puntuacionLabel');
+            if (label) label.textContent = 'Puntuación mínima: 0';
+          }
+          if (heroFiltroModelo) heroFiltroModelo.value = '';
+          if (typeof aplicarFiltros === 'function') aplicarFiltros();
+        });
+      }
+    })();
+  </script>
+</body>
+</html>
